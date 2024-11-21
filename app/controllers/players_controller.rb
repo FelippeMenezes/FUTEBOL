@@ -36,7 +36,7 @@ class PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:name, :goalkeep, :strength, :speed, :balance, :agility, :price, :position)
+    params.require(:player).permit(:name, :accuracy, :strength, :speed, :balance, :agility, :price, :position)
   end
 end
 
