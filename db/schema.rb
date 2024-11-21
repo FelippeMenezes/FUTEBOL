@@ -10,9 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_21_215749) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_21_221111) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "home_team_id"
+    t.integer "away_team_id"
+    t.integer "home_score"
+    t.integer "away_score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.string "name"
+    t.integer "accuracy"
+    t.integer "strength"
+    t.integer "speed"
+    t.integer "balance"
+    t.integer "agility"
+    t.integer "price"
+    t.string "position"
+    t.bigint "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_players_on_team_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.integer "cash"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +57,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_21_215749) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "players", "teams"
 end
