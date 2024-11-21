@@ -12,7 +12,8 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.new(team_params)
+    @team = current_user.teams.build(team_params)
+    @team.cash = 1000000
     if @team.save
       redirect_to @team, notice: 'Team created successfully.'
     else

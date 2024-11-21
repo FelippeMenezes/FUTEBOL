@@ -1,2 +1,32 @@
-<h1>Teams#new</h1>
-<p>Find me in app/views/teams/new.html.erb</p>
+<%= form_with(model: @team, local: true) do |form| %>
+  <% if @team.errors.any? %>
+	<div id="error_explanation">
+	  <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
+	  <ul>
+		<% @team.errors.full_messages.each do |message| %>
+		  <li><%= message %></li>
+		<% end %>
+	  </ul>
+	</div>
+  <% end %>
+  <div class="field">
+	<%= form.label :name %>
+	<%= form.text_field :name %>
+  </div>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
+  <div class="actions">
+	<%= form.submit %>
+  </div>
+<% end %>
+
+<% if current_user.teams.any? %>
+  <h2>Times criados por você:</h2>
+  <ul>
+    <% current_user.teams.each do |team| %>
+      <li><%= link_to "#{team.name} - #{number_to_currency(team.cash)}", team_path(team) %></li>
+    
+    <% end %>
+  </ul>
+<% end %>
+
