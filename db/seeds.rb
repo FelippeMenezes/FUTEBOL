@@ -1,5 +1,5 @@
+require 'faker'
 # Em cada team, criar 22 jogadores com nome, posição(Goleiro, Zagueiro, Lateral, Meio-Campo, Atacante), accuracy, strength, speed, balance e agility aleatórios entre 51 e 99 e price proporcional a soma dos atributos dividido por 5 vezes 9,87
-
 
 8.times do |i|
   team = Team.create!(name: "Team #{i + 1}")
@@ -19,15 +19,15 @@
     # Supondo que a variável `position` contenha a posição do jogador
     case position
     when 'Goleiro'
-      price = agility * 51 + strength * 10 + speed * 10 + balance * 10 + accuracy * 10
+      price = agility * 51 + strength * 15 + speed * 15 + balance * 15 + accuracy * 15
     when 'Zagueiro'
-      price = strength * 51 + balance * 10 + agility * 10 + accuracy * 10 + speed * 10
+      price = strength * 51 + balance * 15 + agility * 15 + accuracy * 15 + speed * 15
     when 'Lateral'
-      price = speed * 51 + balance * 10 + agility * 10 + accuracy * 10 + strength * 10
+      price = speed * 51 + balance * 15 + agility * 15 + accuracy * 15 + strength * 15
     when 'Meio-Campo'
-      price = balance * 51 + agility * 10 + accuracy * 10 + strength * 10 + speed * 10
+      price = balance * 51 + agility * 15 + accuracy * 15 + strength * 15 + speed * 15
     when 'Atacante'
-      price = accuracy * 51 + speed * 10 + agility * 10 + strength * 10 + balance * 10
+      price = accuracy * 51 + speed * 15 + agility * 15 + strength * 15 + balance * 15
     end
  
  
