@@ -42,22 +42,11 @@ class TeamsController < ApplicationController
 
   def buy_players
     @team = Team.find(params[:id])
-    if params[:team] && params[:team][:player_ids]
-      player_ids = params[:team][:player_ids]
-      players = Player.find(player_ids)
-      total_price = players.sum(&:price)
-      
-      if @team.cash >= total_price
-        @team.player_ids = (@team.player_ids + player_ids).uniq
-        @team.cash -= total_price
-      else
-        redirect_to players_path, alert: 'Dinheiro insuficiente.' and return
-      end
-    else
-      redirect_to players_path, alert: 'Nenhum jogador selecionado.' and return
-    end
+    player_ids = params[:team] ? params[:team][:player_ids] : nil
 
-    if @team.save
+    if player_ids.present?
+      total_price = buy_update_team_players(player_ids)
+      buy_update_team_cash(total_price)
       redirect_to players_path, notice: 'Jogadores atualizados com sucesso.'
     else
       redirect_to players_path, alert: 'Nenhum jogador selecionado.'
@@ -69,15 +58,8 @@ class TeamsController < ApplicationController
     player_ids = params[:team] ? params[:team][:player_ids] : nil
 
     if player_ids.present?
-      total_price = 0
-      player_ids.each do |player_id|
-        player = Player.find(player_id)
-        total_price += player.price
-        random_team = Team.where.not(id: @team.id).sample
-        player.update(team: random_team)
-      end
-      @team.cash += total_price
-      @team.save
+      total_price = sell_update_team_players(player_ids)
+      sell_update_team_cash(total_price)
       redirect_to players_path, notice: 'Jogadores vendidos com sucesso.'
     else
       redirect_to players_path, alert: 'Nenhum jogador selecionado.'
@@ -86,8 +68,40 @@ class TeamsController < ApplicationController
 
   private
 
+  def buy_update_team_players(player_ids)
+    players = Player.find(player_ids)
+    total_price = players.sum { |player| player.price }    
+    if @team.cash >= total_price
+      @team.player_ids = (@team.player_ids + player_ids).uniq
+    else
+      redirect_to players_path, alert: 'Dinheiro insuficiente.' and return
+    end
+
+    total_price
+  end
+
+  def buy_update_team_cash(total_price)
+    @team.cash -= total_price
+    @team.save
+  end
+
+  def sell_update_team_players(player_ids)
+    total_price = 0
+    player_ids.each do |player_id|
+      player = Player.find(player_id)
+      total_price += player.price
+      random_team = Team.where.not(id: @team.id).sample
+      player.update(team: random_team)
+    end
+    total_price
+  end
+
+  def sell_update_team_cash(total_price)
+    @team.cash += total_price
+    @team.save
+  end
+
   def team_params
     params.require(:team).permit(:name, :cash)
   end
 end
-
