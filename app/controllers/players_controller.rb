@@ -1,4 +1,10 @@
 class PlayersController < ApplicationController
+  before_action :set_team, only: [:new, :create, :index]
+
+  def index
+    @players = @team.players
+  end
+
   def new
     @team = Team.find(params[:team_id])
     @player = @team.players.build
@@ -34,6 +40,10 @@ class PlayersController < ApplicationController
   end
 
   private
+
+  def set_team
+    @team = Team.find(params[:team_id])
+  end
 
   def player_params
     params.require(:player).permit(:name, :accuracy, :strength, :speed, :balance, :agility, :price, :position)

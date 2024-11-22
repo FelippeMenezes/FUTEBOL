@@ -1,2 +1,4 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+
+<%= link_to 'Comprar', team_players_path(@team), class: 'btn btn-success' %>
+<%= link_to 'Iniciar Partida', new_match_path, class: 'btn btn-warning' %>
+<%= link_to 'Back', new_team_path, class: 'btn btn-primary' %>
