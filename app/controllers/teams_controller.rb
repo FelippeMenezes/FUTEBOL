@@ -42,25 +42,49 @@ class TeamsController < ApplicationController
 
   def buy_players
     @team = Team.find(params[:id])
-    player_ids = params[:team] ? params[:team][:player_ids] : nil
+    if params[:team] && params[:team][:player_ids]
+      player_ids = params[:team][:player_ids]
+      players = Player.find(player_ids)
+      total_price = players.sum(&:price)
 
-    if player_ids.present?
-      total_price = buy_update_team_players(player_ids)
-      buy_update_team_cash(total_price)
+      if @team.cash >= total_price
+        @team.player_ids = (@team.player_ids + player_ids).uniq
+        subtract_cash_from_team(total_price)
+      else
+        redirect_to players_path, alert: 'Dinheiro insuficiente.' and return
+      end
+    else
+      redirect_to players_path, alert: 'Nenhum jogador selecionado.' and return
+    end
+
+    if @team.save
+      buy_update_player_prices(players)
       redirect_to players_path, notice: 'Jogadores atualizados com sucesso.'
     else
-      redirect_to players_path, alert: 'Nenhum jogador selecionado.'
+      redirect_to players_path, alert: 'Erro ao salvar o time.'
     end
   end
 
   def sell_players
     @team = Team.find(params[:id])
-    player_ids = params[:team] ? params[:team][:player_ids] : nil
+    if params[:team] && params[:team][:player_ids]
+      player_ids = params[:team][:player_ids]
+      players = Player.find(player_ids)
+      total_price = players.sum(&:price)
 
-    if player_ids.present?
-      total_price = sell_update_team_players(player_ids)
-      sell_update_team_cash(total_price)
-      redirect_to players_path, notice: 'Jogadores vendidos com sucesso.'
+      players.each do |player|
+        random_team = Team.where.not(id: @team.id).sample
+        player.update(team: random_team)
+      end
+
+      add_cash_to_team(total_price)
+      
+      if @team.save
+        sell_update_player_prices(players)
+        redirect_to players_path, notice: 'Jogadores vendidos com sucesso.'
+      else
+        redirect_to players_path, alert: 'Erro ao salvar o time.'
+      end
     else
       redirect_to players_path, alert: 'Nenhum jogador selecionado.'
     end
@@ -68,40 +92,28 @@ class TeamsController < ApplicationController
 
   private
 
-  def buy_update_team_players(player_ids)
-    players = Player.find(player_ids)
-    total_price = players.sum { |player| player.price }    
-    if @team.cash >= total_price
-      @team.player_ids = (@team.player_ids + player_ids).uniq
-    else
-      redirect_to players_path, alert: 'Dinheiro insuficiente.' and return
-    end
-
-    total_price
-  end
-
-  def buy_update_team_cash(total_price)
+  def subtract_cash_from_team(total_price)
     @team.cash -= total_price
-    @team.save
   end
 
-  def sell_update_team_players(player_ids)
-    total_price = 0
-    player_ids.each do |player_id|
-      player = Player.find(player_id)
-      total_price += player.price
-      random_team = Team.where.not(id: @team.id).sample
-      player.update(team: random_team)
+  def buy_update_player_prices(players)
+    players.each do |player|
+      player.update(price: (player.price * 0.9).to_i)
     end
-    total_price
   end
 
-  def sell_update_team_cash(total_price)
+  def add_cash_to_team(total_price)
     @team.cash += total_price
-    @team.save
+  end
+
+  def sell_update_player_prices(players)
+    players.each do |player|
+      player.update(price: (player.price * 1.1).to_i)
+    end
   end
 
   def team_params
     params.require(:team).permit(:name, :cash)
   end
 end
+

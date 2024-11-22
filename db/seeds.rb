@@ -6,9 +6,9 @@ require 'faker'
  
  
   22.times do
-    name = Faker::Name.first_name
+    name = Faker::Name.male_first_name
     while Player.exists?(name: name)
-      name = Faker::Name.first_name + " " + rand(1..9).to_s
+      name = Faker::Name.male_first_name
     end
     position = ["G", "D", "L", "M", "A"].sample
     accuracy = rand(51..99)
