@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # Rotas para Teams
+  # Rotas para Teams
   get '/teams', to: 'teams#index', as: :teams
   get '/teams/new', to: 'teams#new', as: :new_team
   post '/teams', to: 'teams#create'
@@ -8,8 +9,11 @@ Rails.application.routes.draw do
   patch '/teams/:id', to: 'teams#update'
   put '/teams/:id', to: 'teams#update'
   delete '/teams/:id', to: 'teams#destroy'
+  patch '/teams/:id/sell_players', to: 'teams#sell_players', as: :sell_players_team
+  patch '/teams/:id/buy_players', to: 'teams#buy_players', as: :buy_players_team
 
   # Rotas para Players
+  get '/players', to: 'players#index', as: :players
   get '/teams/:team_id/players', to: 'players#index', as: :team_players
   get '/teams/:team_id/players/new', to: 'players#new', as: :new_team_player
   post '/teams/:team_id/players', to: 'players#create'

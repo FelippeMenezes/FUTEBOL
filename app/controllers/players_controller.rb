@@ -3,6 +3,7 @@ class PlayersController < ApplicationController
 
   def index
     @players = @team.players
+    @other_players = Player.where.not(team_id: @team.id)
   end
 
   def new
