@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   delete '/teams/:id', to: 'teams#destroy'
 
   # Rotas para Players
+  get '/teams/:team_id/players', to: 'players#index', as: :team_players
   get '/teams/:team_id/players/new', to: 'players#new', as: :new_team_player
   post '/teams/:team_id/players', to: 'players#create'
   get '/players/:id/edit', to: 'players#edit', as: :edit_player
