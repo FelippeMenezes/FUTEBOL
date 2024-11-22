@@ -6,8 +6,11 @@ require 'faker'
  
  
   22.times do
-    name = Faker::Name.name
-    position = ["Goleiro", "Zagueiro", "Lateral", "Meio-Campo", "Atacante"].sample
+    name = Faker::Name.first_name
+    while Player.exists?(name: name)
+      name = Faker::Name.first_name + " " + rand(1..9).to_s
+    end
+    position = ["G", "D", "L", "M", "A"].sample
     accuracy = rand(51..99)
     strength = rand(51..99)
     speed = rand(51..99)
@@ -18,15 +21,15 @@ require 'faker'
  
     # Supondo que a variável `position` contenha a posição do jogador
     case position
-    when 'Goleiro'
+    when 'G'
       price = agility * 51 + strength * 15 + speed * 15 + balance * 15 + accuracy * 15
-    when 'Zagueiro'
+    when 'D'
       price = strength * 51 + balance * 15 + agility * 15 + accuracy * 15 + speed * 15
-    when 'Lateral'
+    when 'L'
       price = speed * 51 + balance * 15 + agility * 15 + accuracy * 15 + strength * 15
-    when 'Meio-Campo'
+    when 'M'
       price = balance * 51 + agility * 15 + accuracy * 15 + strength * 15 + speed * 15
-    when 'Atacante'
+    when 'A'
       price = accuracy * 51 + speed * 15 + agility * 15 + strength * 15 + balance * 15
     end
  
