@@ -1,36 +1,91 @@
 <div class="container">
   <div class="left">
     <%= form_with(model: @team, url: sell_players_team_path(@team), method: :patch) do |form| %>
-      <h1><%= @team.name %> <%= number_to_currency(@team.cash) %></h1>
+      <h2><%= @team.name %> <%= number_to_currency(@team.cash) %></h2>
       <div class="scrollable">
-        <ul>
-          <% @team.players.each do |player| %>
-            <li>
-              <%= check_box_tag "team[player_ids][]", player.id, false %>
-              <%= player.name %> <%= player.position %> <%= player.accuracy %> <%= player.speed %> <%= player.strength %> <%= player.agility %> <%= player.balance %> <%= player.price %>
-            </li>
-          <% end %>
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th class="sell-column">Sell</th>
+              <th class="name-column">Name</th>
+              <th class="position-column">P</th>
+              <th class="ac-column">Ac</th>
+              <th class="sp-column">Sp</th>
+              <th class="st-column">St</th>
+              <th class="ag-column">Ag</th>
+              <th class="ba-column">Ba</th>
+              <th class="price-column">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @team.players.each do |player| %>
+              <tr>
+                <td>
+                  <label class="switch">
+                    <%= check_box_tag "team[player_ids][]", player.id, false %>
+                    <span class="slider"></span>
+                  </label>
+                </td>
+                <td><%= player.name %></td>
+                <td><%= player.position %></td>
+                <td><%= player.accuracy %></td>
+                <td><%= player.speed %></td>
+                <td><%= player.strength %></td>
+                <td><%= player.agility %></td>
+                <td><%= player.balance %></td>
+                <td><%= player.price %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
       <%= form.submit "Vender Jogadores", class: 'btn btn-primary' %>
     <% end %>
   </div>
   <div class="right">
     <%= form_with(model: @team, url: buy_players_team_path(@team), method: :patch) do |form| %>
-      <h2>Jogadores à venda</h2>
+      <h2 class="text-center">Jogadores à venda</h2>
       <div class="scrollable">
-        <ul>
-          <% Player.all.reject { |player| @team.players.include?(player) }.each do |player| %>
-            <li>
-              <%= check_box_tag "team[player_ids][]", player.id, false %>
-              <%= player.name %> <%= player.position %> <%= player.accuracy %> <%= player.speed %> <%= player.strength %> <%= player.agility %> <%= player.balance %> <%= player.price %>
-            </li>
-          <% end %>
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th class="sell-column">Sell</th>
+              <th class="name-column">Name</th>
+              <th class="position-column">P</th>
+              <th class="ac-column">Ac</th>
+              <th class="sp-column">Sp</th>
+              <th class="st-column">St</th>
+              <th class="ag-column">Ag</th>
+              <th class="ba-column">Ba</th>
+              <th class="price-column">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% Player.all.reject { |player| @team.players.include?(player) }.each do |player| %>
+              <tr>
+                <td>
+                  <label class="switch">
+                    <%= check_box_tag "team[player_ids][]", player.id, false %>
+                    <span class="slider"></span>
+                  </label>
+                </td>
+                <td><%= player.name %></td>
+                <td><%= player.position %></td>
+                <td><%= player.accuracy %></td>
+                <td><%= player.speed %></td>
+                <td><%= player.strength %></td>
+                <td><%= player.agility %></td>
+                <td><%= player.balance %></td>
+                <td><%= player.price %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
       <%= form.submit "Comprar Jogadores", class: 'btn btn-primary' %>
     <% end %>
   </div>
+  <%= image_tag 'team_show.jpeg', class: 'team-show' %>
 </div>
 
 <%= link_to 'Voltar ao Time', team_path(@team), class: 'btn btn-secondary' %>
