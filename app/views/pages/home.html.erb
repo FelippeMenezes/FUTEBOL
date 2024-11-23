@@ -1,5 +1,8 @@
-<% if user_signed_in? %>
-  <div>
-    <%= link_to 'START', new_team_path, class: 'btn btn-info' %>
-  </div>
-<% end %>
+<div class="home">
+  <% if user_signed_in? %>
+    <div class="start-button center-button">
+      <%= link_to 'START', new_team_path, class: 'btn btn-info'%>
+    </div>
+  <% end %>
+  <%= image_tag 'home.jpeg', class: 'home-image' %>
+</div>
