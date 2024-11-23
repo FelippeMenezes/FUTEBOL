@@ -1,1 +1,22 @@
-// Specific CSS for your home-page
+.home {
+    .center-button {
+        display: flex;
+        justify-content: center;
+        margin-top: 35%; // Adjust the value as needed
+    }
+    
+    .start-button .btn {
+        transform: scale(3);
+    }
+
+    .home-image {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: -1;
+    }
+}
