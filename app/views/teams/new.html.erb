@@ -1,32 +1,28 @@
-<%= form_with(model: @team, local: true) do |form| %>
-  <% if @team.errors.any? %>
-	<div id="error_explanation">
-	  <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
-	  <ul>
-		<% @team.errors.full_messages.each do |message| %>
-		  <li><%= message %></li>
-		<% end %>
-	  </ul>
-	</div>
+<div class="create-team text-center" >
+  <%= form_with(model: @team, local: true) do |form| %>
+    <div class="field">
+    <h2><%= form.label :nome %></h2>
+    <%= form.text_field :name %>
+    </div>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <div class="actions">
+    <%= form.submit "Crie o seu Time",class: "btn btn-primary" %>
+    </div>
   <% end %>
-  <div class="field">
-	<%= form.label :name %>
-	<%= form.text_field :name %>
-  </div>
-  <%= form.hidden_field :user_id, value: current_user.id %>
+</div>
 
-  <div class="actions">
-	<%= form.submit %>
-  </div>
-<% end %>
+<div class="created-teams">
+  <% if current_user.teams.any? %>
+    <h2>Times criados:</h2>
+    <ul>
+      <% current_user.teams.each do |team| %>
+        <div>
+          <%= "#{team.name} #{number_to_currency(team.cash)}" %>
+          <%= link_to 'Jogar', team_path(team), class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
 
-<% if current_user.teams.any? %>
-  <h2>Times criados por você:</h2>
-  <ul>
-    <% current_user.teams.each do |team| %>
-      <li><%= link_to "#{team.name} - #{number_to_currency(team.cash)}", team_path(team) %></li>
-    
-    <% end %>
-  </ul>
-<% end %>
-
+<%= image_tag 'create_team.jpeg', class: 'new-team' %>

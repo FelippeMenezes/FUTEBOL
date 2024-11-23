@@ -1,0 +1,28 @@
+.new-team {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+.create-team {
+    background-color: transparentize($color: #0000007e, $amount: 0);
+    color: $white;
+    margin: 50px;
+    border-radius: 5px;
+    width: 375px;
+    padding: 25px;
+}
+
+.created-teams{
+    background-color: transparentize($color: #0000007e, $amount: 0);
+    color: $white;
+    margin: 50px;
+    border-radius: 5px;
+    width: 375px;
+    padding: 25px;
+}
