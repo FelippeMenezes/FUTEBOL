@@ -1,2 +1,17 @@
-<h1>Matches#new</h1>
-<p>Find me in app/views/matches/new.html.erb</p>
+
+
+<%= form_with(model: @match, local: true) do |form| %>
+  <div class="form-group">
+	<%= form.label :user_team_id, 'Choose your team' %>
+	<%= form.collection_select :user_team_id, current_user.teams, :id, :name, prompt: 'Select your team' %>
+  </div>
+
+
+
+  <div class="form-group">
+	<%= form.submit 'Create Match', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= image_tag 'match-new.jpeg', class: 'match-new' %>
+<%= link_to 'Voltar', @team.present? ? team_path(@team) : teams_path, class: 'btn btn-secondary' %>
