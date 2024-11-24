@@ -4,18 +4,13 @@ class MatchesController < ApplicationController
   end
 
   def new
-    if params[:team_id].present?
-      @team = Team.find(params[:team_id])
-    else
-      @team = nil
-    end
     @match = Match.new
   end
 
   def create
     @match = Match.new(match_params)
     if @match.save
-      redirect_to match_path(@match), notice: 'Match scheduled successfully.'
+      redirect_to matches_path, notice: 'Match scheduled successfully.'
     else
       render :new, status: :unprocessable_entity
     end
