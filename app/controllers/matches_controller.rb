@@ -1,6 +1,12 @@
 class MatchesController < ApplicationController
+  def index
+    @matches = Match.all
+    @team = current_user.team
+  end
+
   def new
     @match = Match.new
+    @team = current_user.team
   end
 
   def create
@@ -33,7 +39,7 @@ class MatchesController < ApplicationController
     @match.home_score = rand(0..5)
     @match.away_score = rand(0..5)
     if @match.save
-      redirect_to match_path(@match), notice: 'Resultado gerado com sucesso.'
+      redirect_to matches_path, notice: 'Resultado gerado com sucesso.'
     else
       render :show, status: :unprocessable_entity
     end
