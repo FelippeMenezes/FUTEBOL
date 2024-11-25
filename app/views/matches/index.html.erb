@@ -1,2 +1,26 @@
-<h1>Matches#index</h1>
-<p>Find me in app/views/matches/index.html.erb</p>
+<h1>Suas partidas</h1>
+<table>
+  <thead>
+	<tr>
+	  <th>Away Team</th>
+	  <th>Home Team</th>
+	  <th>Home Score</th>
+	  <th>Away Score</th>
+	</tr>
+  </thead>
+  <tbody>
+	<% @matches.each do |match| %>
+	  <tr>
+		<td><%= match.away_team.name %></td>
+		<td><%= match.home_team.name %></td>
+		<td><%= match.home_score %></td>
+		<td><%= match.away_score %></td>
+	  </tr>
+	<% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Create New Match', new_match_path, class: 'btn btn-primary' %>
+
+<%= link_to 'Voltar ao Time', team_path(@team), class: 'btn btn-secondary' %>
+
