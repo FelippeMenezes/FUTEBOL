@@ -1,16 +1,28 @@
 <div class="container-teams-show">
   <% if current_user.team.present? %>
     <div class="show-teams">
-      <h2 class="text-center">Seu time</h2>
-      <div class="text-center">
-        <%= "#{current_user.team.name} - #{number_to_currency(current_user.team.cash)}" %>
+      <div>
+        <div class="team-box text-center">
+          <h2 class="text-center">Seu time</h2>
+          <div class="text-center">
+            <%= "#{current_user.team.name} Saldo: #{number_to_currency(current_user.team.cash)}" %>
+          </div>
+        </div>
+        <div class="match-box text-center">
+          <h2>Inicie uma Partida</h2>
+          <%= link_to 'Iniciar Partida', new_match_path, class: 'btn btn-warning' %>            
+        </div>
+        <div class="match-box text-center">
+          <h2>Inicie um Campeonato</h2>
+          <%= link_to 'Iniciar Partida', new_match_path, class: 'btn btn-danger' %>            
+        </div>
+      <%= link_to 'Voltar', new_team_path, class: 'btn btn-secondary' %>   
       </div>
     </div>
   <% end %>
 
-
   <div class="show-players-team">
-  <h2 class="text-center">Jogadores</h2>
+  <h4 class="text-center">Seus Jogadores</h4>
     <div class="scrollable">
       <table class="table table-striped">
         <thead>
@@ -25,7 +37,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @team.players.each do |player| %>
+          <% @team.players.sort_by { |player| ['G', 'D', 'L', 'M', 'A'].index(player.position) }.each do |player| %>
             <tr>
               <td><%= player.name %></td>
               <td><%= player.position %></td>
@@ -39,11 +51,11 @@
         </tbody>
       </table>
     </div>
-  <%= link_to 'Comprar', team_players_path(@team), class: 'btn btn-success' %>
+    <div class="text-center">
+      <%= link_to 'Comprar e/ou Vender', team_players_path(@team), class: 'btn btn-success' %>
+    </div>
   </div>
-
 </div>
-<%= link_to 'Iniciar Partida', new_match_path, class: 'btn btn-warning' %>
-<%= link_to 'Back', new_team_path, class: 'btn btn-primary' %>
+
 
 <%= image_tag 'create_team.jpeg', class: 'new-team' %>
