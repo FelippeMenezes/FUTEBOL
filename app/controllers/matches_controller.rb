@@ -1,24 +1,31 @@
 class MatchesController < ApplicationController
-  def index
-    @matches = Match.all
-  end
-
   def new
     @match = Match.new
   end
 
   def create
-    @match = Match.new(match_params)
-    if @match.save
-      redirect_to matches_path, notice: 'Match scheduled successfully.'
+    user_team = Team.find(params[:match][:user_team_id])
+    opponent_team = Team.find(params[:match][:opponent_team_id])
+
+    @match = Match.new
+    if params[:match][:home_or_away_team] == 'home_team'
+      @match.home_team = user_team
+      @match.away_team = opponent_team
     else
-      render :new, status: :unprocessable_entity
+      @match.home_team = opponent_team
+      @match.away_team = user_team
+    end
+
+    if @match.save
+      redirect_to match_path(@match), notice: 'Partida criada com sucesso.'
+    else
+      render :new
     end
   end
 
   private
 
   def match_params
-    params.require(:match).permit(:home_team_id, :away_team_id, :home_score, :away_score)
+    params.require(:match).permit(:home_or_away_team, :opponent_team_id, :user_team_id)
   end
 end

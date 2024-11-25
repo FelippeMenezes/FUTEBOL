@@ -22,9 +22,9 @@ Rails.application.routes.draw do
   delete '/players/:id', to: 'players#destroy'
 
   # Rotas para Matches
-  get '/matches', to: 'matches#index', as: :matches
-  get '/matches/new', to: 'matches#new', as: :new_match
-  post '/matches', to: 'matches#create'
+  get 'matches/new', to: 'matches#new', as: 'new_match'
+  post 'matches', to: 'matches#create', as: 'matches'
+  get 'matches/:id', to: 'matches#show', as: 'match'
   
   devise_for :users
 
