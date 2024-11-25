@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-players-index">
   <div class="left">
     <%= form_with(model: @team, url: sell_players_team_path(@team), method: :patch) do |form| %>
       <h2><%= @team.name %> <%= number_to_currency(@team.cash) %></h2>
@@ -49,7 +49,7 @@
         <table>
           <thead>
             <tr>
-              <th class="sell-column">Sell</th>
+              <th class="sell-column">Buy</th>
               <th class="name-column">Name</th>
               <th class="position-column">P</th>
               <th class="ac-column">Ag</th>

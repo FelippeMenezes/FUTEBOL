@@ -1,0 +1,44 @@
+.container-teams-show {
+    display: flex;
+    justify-content: space-between;
+  }
+
+.show-teams {
+    flex: 1;
+    background-color: transparentize($color: #0000007e, $amount: 0);
+    height: 150px;
+    color: $white;
+    margin: 50px;
+    border-radius: 5px;
+    width: 375px;
+    padding: 25px;
+}
+
+.show-players-team {
+    flex: 1;
+    background-color: transparentize($color: #0000007e, $amount: 0);
+    height: 150px;
+    color: $white;
+    margin: 50px;
+    border-radius: 5px;
+    width: 375px;
+    padding: 25px;
+
+    .scrollable {
+        background-color: transparentize($color: #00000080, $amount: 0);
+        height: 450px; 
+        width: 100%;
+        overflow-y: auto;
+
+        th {
+            top: 0;
+            background: transparentize($color: #00000080, $amount: 0);;
+            z-index: 1;
+            border: solid 1px white;
+        }
+
+        td {
+            border: solid 1px white;
+        }
+    }
+}
