@@ -23,6 +23,22 @@ class MatchesController < ApplicationController
     end
   end
 
+  def show
+    @match = Match.find(params[:id])
+  end
+
+  def generate_result
+    @match = Match.find(params[:id])
+    # Lógica para gerar o resultado da partida
+    @match.home_score = rand(0..5)
+    @match.away_score = rand(0..5)
+    if @match.save
+      redirect_to match_path(@match), notice: 'Resultado gerado com sucesso.'
+    else
+      render :show, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def match_params
