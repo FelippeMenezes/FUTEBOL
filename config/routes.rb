@@ -25,7 +25,8 @@ Rails.application.routes.draw do
   get 'matches/new', to: 'matches#new', as: 'new_match'
   post 'matches', to: 'matches#create', as: 'matches'
   get 'matches/:id', to: 'matches#show', as: 'match'
-  
+  post 'matches/:id/generate_result', to: 'matches#generate_result', as: 'generate_result_match'
+
   devise_for :users
 
   root to: "pages#home"

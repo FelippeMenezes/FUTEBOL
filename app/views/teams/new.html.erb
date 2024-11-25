@@ -1,29 +1,24 @@
-<% unless current_user.teams.any? %>
-<div class="create-team text-center" >
-  <%= form_with(model: @team, local: true) do |form| %>
-    <div class="field">
-    <h2><%= form.label :nome %></h2>
-    <%= form.text_field :name %>
-    </div>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <div class="actions">
-    <%= form.submit "Crie Novo Time",class: "btn btn-primary" %>
-    </div>
-  <% end %>
-</div>
-<% end %>
-
-<% if current_user.teams.any? %>
-  <div class="created-teams" >
-    <h2 class="text-center">Seu time</h2>
-    <% current_user.teams.each do |team| %>
-      <div class="text-center">
-        <%= "#{team.name} - #{number_to_currency(team.cash)}" %>
+<% unless current_user.team.present? %>
+  <div class="create-team text-center">
+    <%= form_with(model: @team, local: true) do |form| %>
+      <div class="field">
+        <%= form.label :name, "Nome do Time" %>
+        <%= form.text_field :name %>
       </div>
-      <div class="text-center">
-        <%= link_to 'Jogar', team_path(team), class: "btn btn-primary" %>
+
+      <div class="actions">
+        <%= form.submit "Criar Time" %>
       </div>
     <% end %>
+  </div>
+<% end %>
+
+<% if current_user.team.present? %>
+  <div class="created-teams">
+    <h2 class="text-center">Seu time</h2>
+    <div class="text-center">
+      <%= "#{current_user.team.name} - #{number_to_currency(current_user.team.cash)}" %>
+    </div>
   </div>
 <% end %>
 

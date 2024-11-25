@@ -1,1 +1,22 @@
 <%= link_to 'Back', new_match_path %>
+
+<h1>Partida</h1>
+
+<p>
+  <strong>Time da casa:</strong>
+  <%= @match.home_team.name %>
+</p>
+<p>
+  <strong>Visitante:</strong>
+  <%= @match.away_team.name %>
+</p>
+
+<p>
+  <strong>Placar:</strong>
+  <%= @match.home_score %> - <%= @match.away_score %>
+</p>
+
+<%= form_with url: generate_result_match_path(@match), method: :post do %>
+  <%= submit_tag 'Gerar Resultado' %>
+<% end %>
+
