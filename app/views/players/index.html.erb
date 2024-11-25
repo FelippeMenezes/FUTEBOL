@@ -1,7 +1,10 @@
 <div class="container-players-index">
   <div class="left">
     <%= form_with(model: @team, url: sell_players_team_path(@team), method: :patch) do |form| %>
-      <h2><%= @team.name %> <%= number_to_currency(@team.cash) %></h2>
+      <h3 class="text-center flex-container">
+      <%= link_to 'Voltar', team_path(@team), class: 'btn btn-secondary' %>
+      <span class="team-cash"><%= number_to_currency(@team.cash) %></span>
+      </h3> 
       <div class="scrollable">
         <table>
           <thead>
@@ -88,4 +91,3 @@
   <%= image_tag 'team_show.jpeg', class: 'team-show' %>
 </div>
 
-<%= link_to 'Voltar ao Time', team_path(@team), class: 'btn btn-secondary' %>
