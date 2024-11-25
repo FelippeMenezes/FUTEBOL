@@ -8,6 +8,9 @@
 @import "font-awesome";
 
 // Your CSS partials
+@import "components/matches/_new";
+@import "components/matches/_show";
+@import "components/teams/_show";
 @import "components/log_in/_new";
 @import "components/sign_up/_new";
 @import "components/password/_new";
