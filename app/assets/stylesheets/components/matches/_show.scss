@@ -8,3 +8,43 @@
     background-size: cover;
     z-index: -1;
 }
+
+.matches-show-container {
+    display: flex;
+    justify-content: space-around;
+
+    .home-team {
+        background-color: transparentize($color: #0000007e, $amount: 0);
+        height: 400px;
+        color: $white;
+        margin: 50px;
+        width: 350px;
+        padding: 25px;
+        border-radius: 10px;
+    }
+
+    .score {
+        background-color: transparentize($color: #0000007e, $amount: 0);
+        height: 200px;
+        color: $white;
+        margin: 50px;
+        width: 200px;
+        padding: 25px;
+        border-radius: 10px;
+    }
+
+    .away-team {
+        background-color: transparentize($color: #0000007e, $amount: 0);
+        height: 400px;
+        color: $white;
+        margin: 50px;
+        width: 350px;
+        padding: 25px;
+        border-radius: 10px;
+    }
+}
+
+.btn-secondary {
+    margin-left: 75px;
+    border-radius: 10px;
+}
