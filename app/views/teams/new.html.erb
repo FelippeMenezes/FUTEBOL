@@ -14,12 +14,16 @@
 <% end %>
 
 <% if current_user.team.present? %>
-  <div class="created-teams">
-    <h2 class="text-center">Seu time</h2>
-    <div class="text-center">
-      <%= "#{current_user.team.name} - #{number_to_currency(current_user.team.cash)}" %> <%= link_to 'Jogar', team_path(current_user.team), class: 'btn btn-primary' %>
-    </div>
+<div class="created-teams">
+  <h2 class="text-center">Seu time</h2>
+  <div class="text-center">
+    
+      <%= "#{current_user.team.name} - #{number_to_currency(current_user.team.cash)}" %> 
+      <%= link_to 'Jogar', team_path(current_user.team), class: 'btn btn-primary' %>
+    <% else %>
+    
   </div>
+</div>
 <% end %>
 
 <%= image_tag 'create_team.jpeg', class: 'new-team' %>
