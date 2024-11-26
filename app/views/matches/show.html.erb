@@ -1,7 +1,36 @@
 <div class="matches-show-container">
   <div class="home-team text-center">
-    <h2>Time da casa</h2>
-    <%= @match.home_team.name %>
+  <h2>Time da casa</h2>
+  <%= @match.home_team.name %>
+  <h4>Escolha 11 titulares</h4>
+  <div class="scrollable">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>P</th>
+          <th>Ag</th>
+          <th>St</th>
+          <th>Sp</th>
+          <th>Ba</th>
+          <th>Ac</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @match.home_team.players.sort_by { |player| ["G", "D", "L", "M", "A"].index(player.position) || 5 }.each do |player| %>
+          <tr>
+            <td><%= player.name %></td>
+            <td><%= player.position %></td>
+            <td><%= player.agility %></td>
+            <td><%= player.strength %></td>
+            <td><%= player.speed %></td>
+            <td><%= player.balance %></td>
+            <td><%= player.accuracy %></td>
+          </tr>
+        <% end %>
+      </tbody>  
+    </table>
+  </div>
   </div>
   <div class="score text-center">
     <h2>Placar</h2>
@@ -13,6 +42,35 @@
   <div class="away-team text-center">
     <h2>Visitante</h2>
     <%= @match.away_team.name %>
+    <h3>Jogadores:</h3>
+    <div class="scrollable">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>P</th>
+          <th>Ag</th>
+          <th>St</th>
+          <th>Sp</th>
+          <th>Ba</th>
+          <th>Ac</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @match.away_team.players.sort_by { |player| ["G", "D", "L", "M", "A"].index(player.position) || 5 }.each do |player| %>
+          <tr>
+            <td><%= player.name %></td>
+            <td><%= player.position %></td>
+            <td><%= player.agility %></td>
+            <td><%= player.strength %></td>
+            <td><%= player.speed %></td>
+            <td><%= player.balance %></td>
+            <td><%= player.accuracy %></td>
+          </tr>
+        <% end %>
+      </tbody>  
+    </table>
+  </div>
   </div>
 </div>
 
