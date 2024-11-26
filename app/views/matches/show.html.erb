@@ -1,20 +1,22 @@
-<p>
-  <strong>Time da casa:</strong>
-  <%= @match.home_team.name %>
-</p>
-<p>
-  <strong>Visitante:</strong>
-  <%= @match.away_team.name %>
-</p>
+<div class="matches-show-container">
+  <div class="home-team text-center">
+    <h2>Time da casa</h2>
+    <%= @match.home_team.name %>
+  </div>
+  <div class="score text-center">
+    <h2>Placar</h2>
+    <%= @match.home_score %> - <%= @match.away_score %>
+    <%= form_with url: generate_result_match_path(@match), method: :post do %>
+    <%= submit_tag 'Iniciar Partida', class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <div class="away-team text-center">
+    <h2>Visitante</h2>
+    <%= @match.away_team.name %>
+  </div>
+</div>
 
-<p>
-  <strong>Placar:</strong>
-  <%= @match.home_score %> - <%= @match.away_score %>
-</p>
-
-<%= form_with url: generate_result_match_path(@match), method: :post do %>
-  <%= submit_tag 'Gerar Resultado' %>
-<% end %>
+<%= link_to 'Voltar', new_match_path, class: 'btn btn-secondary' %>
 
 <%= image_tag 'match-new.jpeg', class: 'new-team' %>
 
