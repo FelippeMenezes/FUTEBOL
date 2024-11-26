@@ -8,3 +8,22 @@
     background-size: cover;
     z-index: -1;
 }
+
+.create-match {
+    background-color: transparentize($color: #0000007e, $amount: 0);
+    height: 140px;
+    color: $white;
+    margin: 50px;
+    border-radius: 5px;
+    width: 450px;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.btn-secondary {
+    margin-right: 50px;
+}
+
+.btn-primary {
+    margin-top: 25px;
+}

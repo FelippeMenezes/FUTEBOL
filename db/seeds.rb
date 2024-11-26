@@ -1,5 +1,4 @@
 require 'faker'
-# Em cada team, criar 22 jogadores com nome, posição(Goleiro, Zagueiro, Lateral, Meio-Campo, Atacante), accuracy, strength, speed, balance e agility aleatórios entre 51 e 99 e price proporcional a soma dos atributos dividido por 5 vezes 9,87
 
 8.times do |i|
   team_name = Faker::Sports::Football.team

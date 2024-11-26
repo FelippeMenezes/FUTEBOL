@@ -1,21 +1,22 @@
+<div class="create-match">
 <%= form_with(model: @match, url: matches_path, local: true) do |form| %>
   <div class="field">
-    <%= form.label :home_or_away_team, "Você quer ser o time da casa ou visitante?" %>
+    <%= form.label :home_or_away_team, "Quer ser o time da casa ou visitante?" %>
     <%= form.select :home_or_away_team, options_for_select([['Casa', 'home_team'], ['Visitante', 'away_team']]) %>
   </div>
 
   <div class="field">
-    <%= form.label :opponent_team, "Escolha o time adversário" %>
+    <%= form.label :opponent_team, "Escolha o time adversário:" %>
     <%= form.collection_select :opponent_team_id, Team.where(user_id: nil), :id, :name %>
   </div>
 
   <%= form.hidden_field :user_team_id, value: current_user.team.id %>
 
   <div class="actions">
-    <%= form.submit "Criar Partida" %>
-  </div>
+    <%= link_to 'Voltar', team_path(@team), class: 'btn btn-secondary' %>
+    <%= form.submit "Criar Partida", class: "btn btn-primary" %>  
+  </div>  
 <% end %>
-
-<%= link_to 'Voltar ao Time', team_path(@team), class: 'btn btn-secondary' %>
+</div>
 
 <%= image_tag 'match-new.jpeg', class: 'new-team' %>
