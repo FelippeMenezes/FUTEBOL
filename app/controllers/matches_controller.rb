@@ -39,7 +39,7 @@ class MatchesController < ApplicationController
     @match.home_score = rand(0..5)
     @match.away_score = rand(0..5)
     if @match.save
-      redirect_to matches_path, notice: 'Resultado gerado com sucesso.'
+      redirect_to match_path(@match)
     else
       render :show, status: :unprocessable_entity
     end
