@@ -1,6 +1,16 @@
 <% unless current_user.team.present? %>
   <div class="create-team text-center">
     <%= form_with(model: @team, local: true) do |form| %>
+      <% if @team.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
+          <ul>
+            <% @team.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <div class="field">
         <%= form.label :name, "Nomeie o seu Time" %>
         <%= form.text_field :name, class: "field-name" %>
@@ -20,8 +30,6 @@
     
       <%= "#{current_user.team.name} - #{number_to_currency(current_user.team.cash)}" %> 
       <%= link_to 'Jogar', team_path(current_user.team), class: 'btn btn-primary' %>
-    <% else %>
-    
   </div>
 </div>
 <% end %>

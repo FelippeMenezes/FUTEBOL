@@ -1,25 +1,41 @@
-.container-matches-index {
-    background-color: transparentize($color: #0000007e, $amount: 0);
-    height: 425px;
-    color: $white;
-    margin-top: 25px;
-    margin-left: 50px;
-    margin-bottom: 15px;    
-    width: 450px;
-    padding: 25px;
-    border-radius: 10px;
+.matches-index{
+    .container-matches-index {
+        background-color: transparentize($color: #0000007e, $amount: 0);
+        height: 450px;
+        color: $white;
+        margin-top: 25px;
+        margin-left: 50px;
+        margin-bottom: 15px;    
+        width: 450px;
+        padding: 25px;
+        border-radius: 10px;
 
-    .new-team {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-repeat: no-repeat;
-        background-size: cover;
-        z-index: -1;
+        .new-team {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        table {
+            width: 100%;
+        }
     }
 
-    table {
-        width: 100%;
+    .matches-index-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 50px;
+        width: 450px;
+
+        .btn-secondary {
+            border-radius: 10px;
+            padding: 5px 5px;
+            height: 35px;
+            margin-top: 5px;
+        }
     }
 }
