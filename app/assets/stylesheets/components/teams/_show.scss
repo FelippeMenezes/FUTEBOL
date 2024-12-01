@@ -1,6 +1,16 @@
 .container-teams-show {
     display: flex;
     justify-content: space-between;
+
+    .new-team {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: -1;
+    }
 }
 
 .show-teams {
