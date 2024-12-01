@@ -2,12 +2,12 @@
 <%= form_with(model: @match, url: matches_path, local: true) do |form| %>
   <div class="field">
     <%= form.label :home_or_away_team, "Quer ser o time da casa ou visitante?" %>
-    <%= form.select :home_or_away_team, options_for_select([['Casa', 'home_team'], ['Visitante', 'away_team']]) %>
+    <%= form.select :home_or_away_team, options_for_select([['Casa', 'home_team'], ['Visitante', 'away_team']]), {}, { class: 'rounded-select' } %>
   </div>
 
   <div class="field">
     <%= form.label :opponent_team, "Escolha o time adversário:" %>
-    <%= form.collection_select :opponent_team_id, Team.where(user_id: nil), :id, :name %>
+    <%= form.collection_select :opponent_team_id, Team.where(user_id: nil), :id, :name, {}, { class: 'rounded-select' } %>
   </div>
 
   <%= form.hidden_field :user_team_id, value: current_user.team.id %>

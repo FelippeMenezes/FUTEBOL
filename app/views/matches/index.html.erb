@@ -1,27 +1,32 @@
-<div class='container-matches-index'>
-	<h1 class='text-center'>Suas partidas</h1>
-	<table>
-	<thead class='text-center'>
-		<tr>
-		<th>Home</th>
-		<th></th>
-		<th></th>
-		<th></th>	
-		<th>Away</th>		
-		</tr>
-	</thead>
-	<tbody class='text-center'>
-		<% @matches.each do |match| %>
-		<tr>
-			<td><%= match.home_team.name %></td>
-			<td><%= match.home_score %></td>
-			<td>X</td>
-			<td><%= match.away_score %></td>
-			<td><%= match.away_team.name %></td>			
-		</tr>
-		<% end %>
-	</table>
-	<%= image_tag 'match-new.jpeg', class: 'new-team' %>
+<div class="matches-index">
+	<div class='container-matches-index'>
+		<h1 class='text-center'>Suas partidas</h1>
+		<table>
+		<thead class='text-center'>
+			<tr>
+			<th>Home</th>
+			<th></th>
+			<th></th>
+			<th></th>	
+			<th>Away</th>		
+			</tr>
+		</thead>
+		<tbody class='text-center'>
+			<% @matches.each do |match| %>
+			<tr>
+				<td><%= match.home_team.name %></td>
+				<td><%= match.home_score %></td>
+				<td>X</td>
+				<td><%= match.away_score %></td>
+				<td><%= match.away_team.name %></td>			
+			</tr>
+			<% end %>
+		</table>
+		<%= image_tag 'match-new.jpeg', class: 'new-team' %>
+	</div>
+	<div class="matches-index-buttons">
+	<%= link_to 'Voltar ao Time', team_path(@team), class: 'btn btn-secondary' %>
+	<%= link_to 'Create New Match', new_match_path, class: 'btn btn-primary' %>
+	</div>
 </div>
-<%= link_to 'Voltar ao Time', team_path(@team), class: 'btn btn-secondary' %>
-<%= link_to 'Create New Match', new_match_path, class: 'btn btn-primary' %>
+
