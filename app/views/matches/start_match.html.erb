@@ -1,4 +1,4 @@
-<div class="matches-show-container">
+<div class="matches-start-match-container">
   <div class="home-team text-center">
   <h2>Time da casa</h2>
   <%= @match.home_team.name %>
@@ -33,8 +33,9 @@
   </div>
   </div>
   <div class="score text-center">
-    <h2>Placar</h2>
-    <%= @match.home_score %> - <%= @match.away_score %>
+    <%= form_with url: generate_result_match_path(@match), method: :post do %>
+    <%= submit_tag 'Iniciar Partida', class: "btn btn-primary" %>
+    <% end %>
   </div>
   <div class="away-team text-center">
     <h2>Visitante</h2>
@@ -71,7 +72,6 @@
   </div>
 </div>
 
-<%= link_to 'Histórico de Partidas', matches_path, class: 'btn btn-secondary match-show-back-button' %>
+<%= link_to 'Voltar', new_match_path, class: 'btn btn-secondary match-show-back-button' %>
 
 <%= image_tag 'match-new.jpeg', class: 'new-team' %>
-

@@ -23,7 +23,7 @@ class MatchesController < ApplicationController
     end
 
     if @match.save
-      redirect_to match_path(@match), notice: 'Partida criada com sucesso.'
+      redirect_to start_match_path(@match), notice: 'Partida criada com sucesso.'
     else
       render :new
     end
@@ -33,14 +33,19 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:id])
   end
 
+  def start_match
+    @match = Match.find(params[:id])
+  end
+
   def generate_result
     @match = Match.find(params[:id])
     # Lógica para gerar o resultado da partida
     @match.home_score = rand(0..5)
     @match.away_score = rand(0..5)
     if @match.save
-      redirect_to match_path(@match)
+      redirect_to match_path(@match), notice: 'Resultado gerado com sucesso.'
     else
+      flash[:alert] = 'Erro ao salvar o resultado.'
       render :show, status: :unprocessable_entity
     end
   end
