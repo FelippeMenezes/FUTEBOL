@@ -1,3 +1,16 @@
+// Variáveis para valores reutilizáveis
+$border-radius: 10px;
+$container-padding: 25px;
+$container-margin: 25px;
+$container-margin-large: 50px;
+$container-width-large: 650px;
+$container-width-small: 235px;
+$container-height-large: 540px;
+$container-height-small: 200px;
+$scrollable-height: 390px;
+$transparent-black: transparentize(#0000007e, 0);
+$transparent-black-light: transparentize(#00000080, 0);
+
 .new-team {
     position: absolute;
     top: 50px;
@@ -12,15 +25,15 @@
     display: flex;
     justify-content: space-around;
 
-    .home-team {
-        background-color: transparentize($color: #0000007e, $amount: 0);
-        height: 540px;
+    .team {
+        background-color: $transparent-black;
+        height: $container-height-large;
         color: $white;
-        margin-left: 25px;
-        margin-top: 25px;
-        width: 650px;
-        padding: 25px;
-        border-radius: 10px;
+        margin-left: $container-margin;
+        margin-top: $container-margin;
+        width: $container-width-large;
+        padding: $container-padding;
+        border-radius: $border-radius;
 
         th {
             background-color: black;
@@ -29,68 +42,47 @@
         }
 
         td {
-            background-color: transparentize($color: #00000080, $amount: 0);
+            background-color: $transparent-black-light;
             color: white;
             border: solid 1px white;
         }
 
         .scrollable {
-            height: 390px;
+            height: $scrollable-height;
             overflow-y: auto;
-            border-radius: 10px;
-        } 
+            border-radius: $border-radius;
+        }
+    }
+
+    .home-team {
+        @extend .team;
+        margin-left: $container-margin;
+    }
+
+    .away-team {
+        @extend .team;
+        margin-left: 0;
+        margin-right: $container-margin;
     }
 
     .score {
-        background-color: transparentize($color: #0000007e, $amount: 0);
-        height: 200px;
+        background-color: $transparent-black;
+        height: $container-height-small;
         color: $white;
-        margin: 50px;
+        margin: $container-margin-large;
         margin-top: 150px;
-        width: 235px;
-        padding: 25px;
-        border-radius: 10px;
-
+        width: $container-width-small;
+        padding: $container-padding;
+        border-radius: $border-radius;
 
         h2 {
             padding-top: 50px;
         }
     }
-
-    .away-team {
-        background-color: transparentize($color: #0000007e, $amount: 0);
-        height: 540px;
-        color: $white;
-        margin-right: 25px;
-        margin-top: 25px;
-        width: 650px;
-        padding: 25px;
-        border-radius: 10px;
-
-        th {
-            background-color: black;
-            color: white;
-            border: solid 1px white;
-        }
-
-        td {
-            background-color: transparentize($color: #00000080, $amount: 0);
-            color: white;
-            border: solid 1px white;
-        }
-
-        .scrollable {
-            height: 390px;
-            overflow-y: auto;
-            border-radius: 10px;
-        } 
-    }
 }
 
 .match-show-back-button {
     margin-top: 5px;
-    margin-left: 50px;
-    border-radius: 10px;
+    margin-left: $container-margin-large;
+    border-radius: $border-radius;
 }
-
-

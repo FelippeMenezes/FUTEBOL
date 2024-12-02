@@ -1,3 +1,11 @@
+// Variáveis para valores reutilizáveis
+$border-radius: 10px;
+$container-width: 450px;
+$container-padding: 25px;
+$container-margin-left: 50px;
+$container-margin-top: 25px;
+$transparent-black: transparentize(#0000007e, 0);
+
 .new-team {
     position: absolute;
     top: 50px;
@@ -9,34 +17,35 @@
 }
 
 .create-match {
-    background-color: transparentize($color: #0000007e, $amount: 0);
+    background-color: $transparent-black;
     height: 160px;
     color: $white;
-    margin-top: 25px;
-    margin-left: 50px;    
-    width: 450px;
-    padding: 25px;
-    border-radius: 10px;
+    margin-top: $container-margin-top;
+    margin-left: $container-margin-left;    
+    width: $container-width;
+    padding: $container-padding;
+    border-radius: $border-radius;
 
     .field {
         margin-bottom: 5px;
-        .rounded-select {
-            padding: 5px;
-            border-radius: 10px;
-        }
 
+        .rounded-select,
         .field-name {
-            border-radius: 10px;
+            padding: 5px;
+            border-radius: $border-radius;
         }
     }
 
+    .btn-secondary,
+    .btn-primary {
+        border-radius: $border-radius;
+    }
+
     .btn-secondary {
-        margin-right: 50px;
-        border-radius: 10px;
+        margin-right: $container-margin-left;
     }
     
     .btn-primary {
         margin-top: 5px;
-        border-radius: 10px;
     }
 }
