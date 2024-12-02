@@ -10,27 +10,33 @@
 
 .create-team {
     background-color: transparentize($color: #0000007e, $amount: 0);
-    height: 160px;
+    height: 200px;
     color: $white;
     margin-top: 25px;
     margin-left: 50px;
     border-radius: 10px;
-    width: 375px;
+    width: 450px;
     padding: 25px;
+
+    .field {
+        display: flex;
+        flex-direction: column;
+
     
         .field-name {
             border-radius: 10px;
-            margin-top: 5px;
+            margin: 15px;
         }
+    }
 }
 
 .created-teams{
     background-color: transparentize($color: #0000007e, $amount: 0);
-    height: 160px;
+    height: 200px;
     color: $white;
     margin-top: 25px;
     margin-left: 50px;
     border-radius: 10px;
-    width: 375px;
+    width: 450px;
     padding: 25px;
 }

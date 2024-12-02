@@ -28,13 +28,13 @@
 .team-box {
     background-color: transparentize($color: #0000007e, $amount: 0);
     margin-top:  25px;
-    height: 160px;
+    height: 250px;
     border-radius: 10px;
     padding: 20px;
 }
 
 .match-box {
-    margin-top: 20px;
+    margin-top: 15px;
     background-color: transparentize($color: #0000007e, $amount: 0);
     border-radius: 10px;
     padding: 20px;
@@ -51,7 +51,7 @@
 .show-players-team {
     flex: 1;
     background-color: transparentize($color: #0000007e, $amount: 0);
-    height: 500px;
+    height: 525px;
     color: white;
     margin: 25px;
     border-radius: 10px;
@@ -59,7 +59,7 @@
 
     .scrollable {
         background-color: transparentize($color: #00000080, $amount: 0);
-        height: 400px; 
+        height: 425px; 
         width: 100%;
         overflow-y: auto;
         margin-bottom: 8px;
