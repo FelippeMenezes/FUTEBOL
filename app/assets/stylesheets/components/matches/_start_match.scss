@@ -1,3 +1,16 @@
+$new-team-bg-color: transparentize(#0000007e, 0);
+$team-bg-color: transparentize(#00000080, 0);
+$team-height: 540px;
+$team-width: 650px;
+$team-padding: 25px;
+$team-margin-top: 25px;
+$team-border-radius: 10px;
+$score-height: 200px;
+$score-width: 235px;
+$score-margin: 50px;
+$score-margin-top: 150px;
+$score-padding-top: 50px;
+
 .new-team {
     position: absolute;
     top: 50px;
@@ -12,83 +25,61 @@
     display: flex;
     justify-content: space-around;
 
-    .home-team {
-        background-color: transparentize($color: #0000007e, $amount: 0);
-        height: 540px;
+    .team {
+        background-color: $new-team-bg-color;
+        height: $team-height;
         color: $white;
-        margin-left: 25px;
-        margin-top: 25px;
-        width: 650px;
-        padding: 25px;
-        border-radius: 10px;
+        margin-top: $team-margin-top;
+        width: $team-width;
+        padding: $team-padding;
+        border-radius: $team-border-radius;
 
-        th {
+        th, td {
             background-color: black;
             color: white;
             border: solid 1px white;
         }
 
         td {
-            background-color: transparentize($color: #00000080, $amount: 0);
-            color: white;
-            border: solid 1px white;
+            background-color: $team-bg-color;
         }
 
         .scrollable {
             height: 390px;
             overflow-y: auto;
-            border-radius: 10px;
-        } 
+            border-radius: $team-border-radius;
+        }
+    }
+
+    .home-team {
+        @extend .team;
+        margin-left: 25px;
+    }
+
+    .away-team {
+        @extend .team;
+        margin-right: 25px;
     }
 
     .score {
-        background-color: transparentize($color: #0000007e, $amount: 0);
-        height: 200px;
+        background-color: $new-team-bg-color;
+        height: $score-height;
         color: $white;
-        margin: 50px;
-        margin-top: 150px;
-        width: 235px;
-        border-radius: 10px;
-        padding-top: 50px;
-        padding: 25px;
+        margin: $score-margin;
+        margin-top: $score-margin-top;
+        width: $score-width;
+        border-radius: $team-border-radius;
+        padding-top: $score-padding-top;
+        padding: $team-padding;
 
         .btn-primary {
             margin-top: 50px;
         }
-    }
-
-    .away-team {
-        background-color: transparentize($color: #0000007e, $amount: 0);
-        height: 540px;
-        color: $white;
-        margin-right: 25px;
-        margin-top: 25px;
-        width: 650px;
-        padding: 25px;
-        border-radius: 10px;
-
-        th {
-            background-color: black;
-            color: white;
-            border: solid 1px white;
-        }
-
-        td {
-            background-color: transparentize($color: #00000080, $amount: 0);
-            color: white;
-            border: solid 1px white;
-        }
-
-        .scrollable {
-            height: 390px;
-            overflow-y: auto;
-            border-radius: 10px;
-        } 
     }
 }
 
 .match-start-back-button {
     margin-top: 5px;
     margin-left: 50px;
-    border-radius: 10px;
+    border-radius: $team-border-radius;
 }

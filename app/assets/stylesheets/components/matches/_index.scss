@@ -1,80 +1,65 @@
-.matches-index{
+.matches-index {
     .container-matches-index {
-        background-color: transparentize($color: #0000007e, $amount: 0);
-        height: 540px;
-        color: $white;
-        margin-top: 25px;
-        margin-left: 50px;   
-        width: 450px;
-        padding: 25px;
+    background-color: transparentize(#0000007e, 0);
+    height: 540px;
+    color: $white;
+    margin: 25px 0 0 50px;
+    width: 450px;
+    padding: 25px;
+    border-radius: 10px;
+
+    .new-team {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: -1;
+    }
+
+    .scrollable {
+        background-color: transparentize(#0000007e, 0);
         border-radius: 10px;
+        height: 450px;
+        overflow-y: auto;
 
-        .new-team {
-            position: absolute;
-            top: 50px;
-            left: 0;
-            width: 100%;
-            background-repeat: no-repeat;
-            background-size: cover;
-            z-index: -1;
-        }
-
-        .scrollable { 
-            background-color: transparentize($color: #0000007e, $amount: 0);
-            border-radius: 10px;
-            height: 450px;
-            overflow-y: auto;
-
-            .sticky-header th {
-                position: sticky;
-                top: 0;
-                background-color: black;
-                z-index: 1;
-            }
-        }
-
-        table {
-            width: 100%;
-            
-        }
-
-        .col-home {
-            width: 25%;
-        }
-        
-        .col-home-score {
-        width: 5%;
-        }
-        
-        .col-vs {
-        width: 5%;
-        }
-        
-        .col-away-score {
-        width: 5%;
-        }
-        
-        .col-away {
-        width: 25%;
+        .sticky-header th {
+        position: sticky;
+        top: 0;
+        background-color: black;
+        z-index: 1;
         }
     }
 
+    table {
+        width: 100%;
+    }
+
+    .col-home,
+    .col-away {
+        width: 25%;
+    }
+
+    .col-home-score,
+    .col-vs,
+    .col-away-score {
+        width: 5%;
+    }
+    }
+
     .matches-index-buttons {
-        display: flex;
-        justify-content: space-between;
-        margin-left: 50px;
-        width: 450px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    width: 450px;
 
-        .btn-secondary {
-            border-radius: 10px;
-            padding: 5px 5px;
-            height: 35px;
-            margin-top: 5px;
-        }
-
-        .btn-primary {
-            margin-top: 5px;
-            border-radius: 10px;
-        }
+    .btn-secondary,
+    .btn-primary {
+        border-radius: 10px;
+        padding: 5px;
+        height: 35px;
+        margin-top: 5px;
+    }
     }
 }
