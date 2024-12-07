@@ -12,11 +12,11 @@
               <th class="sell-column">Sell</th>
               <th class="name-column">Name</th>
               <th class="position-column">P</th>
-              <th class="ac-column">Ag</th>
-              <th class="sp-column">St</th>
-              <th class="st-column">Sp</th>              
-              <th class="ba-column">Ba</th>
-              <th class="ag-column">Ac</th>
+              <th class="ac-column">Level</th>
+              <th class="sp-column">Y</th>
+              <th class="st-column">R</th>              
+              <th class="ba-column">G</th>
+              <th class="ag-column">I</th>
               <th class="price-column">Price</th>
             </tr>
           </thead>
@@ -31,11 +31,11 @@
                 </td>
                 <td><%= player.name %></td>
                 <td><%= player.position %></td>
-                <td><%= player.agility %></td>
-                <td><%= player.strength %></td>
-                <td><%= player.speed %></td>                
-                <td><%= player.balance %></td>
-                <td><%= player.accuracy %></td>
+                <td><%= player.level %></td>
+                <td><%= player.yellow_card %></td>
+                <td><%= player.red_card %></td>
+                <td><%= player.goal_scored %></td>
+                <td><%= player.injury %></td>
                 <td><%= player.price %></td>
               </tr>
             <% end %>
@@ -57,11 +57,11 @@
               <th class="sell-column">Buy</th>
               <th class="name-column">Name</th>
               <th class="position-column">P</th>
-              <th class="ac-column">Ag</th>
-              <th class="sp-column">St</th>
-              <th class="st-column">Sp</th>              
-              <th class="ba-column">Ba</th>
-              <th class="ag-column">Ac</th>
+              <th class="level-column">Level</th>
+              <th class="yc-column">Y</th>
+              <th class="rc-column">R</th>              
+              <th class="gs-column">G</th>
+              <th class="i-column">I</th>
               <th class="price-column">Price</th>
             </tr>
           </thead>
@@ -76,11 +76,11 @@
                 </td>
                 <td><%= player.name %></td>
                 <td><%= player.position %></td>
-                <td><%= player.agility %></td>
-                <td><%= player.strength %></td>
-                <td><%= player.speed %></td>                
-                <td><%= player.balance %></td>
-                <td><%= player.accuracy %></td>
+                <td><%= player.level %></td>
+                <td><%= player.yellow_card %></td>
+                <td><%= player.red_card %></td>
+                <td><%= player.goal_scored %></td>
+                <td><%= player.injury %></td>
                 <td><%= player.price %></td>
               </tr>
             <% end %>
