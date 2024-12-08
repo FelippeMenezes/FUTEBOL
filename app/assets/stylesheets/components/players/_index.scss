@@ -10,6 +10,26 @@ $btn-border-radius: 10px;
   margin-top: 25px;
   color: white;
 
+  .injury-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .health-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .yellow-card-icon {
+    width: 15px;
+    height: 20px;
+  }
+
+  .red-card-icon {
+    width: 15px;
+    height: 20px;
+  }
+
   .team-show {
     position: absolute;
     top: 50px;
@@ -89,9 +109,11 @@ $btn-border-radius: 10px;
         th.name-column {
           width: 27%;
         }
-
+        th.level-column {
+          width: 10%;
+        }
+        
         th.position-column,
-        th.level-column,
         th.yc-column,
         th.rc-column,
         th.gs-column,
