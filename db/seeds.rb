@@ -12,34 +12,22 @@ require 'faker'
     while Player.exists?(name: name)
       name = Faker::Name.male_first_name
     end
-    position = ["G", "D", "L", "M", "A"].sample
-    agility = position == 'G' ? rand(80..99) : rand(31..79)
-    strength = position == 'D' ? rand(80..99) : rand(31..79)
-    speed = position == 'L' ? rand(80..99) : rand(31..79)
-    balance = position == 'M' ? rand(80..99) : rand(31..79)
-    accuracy = position == 'A' ? rand(80..99) : rand(31..79)
-
-    case position
-    when 'G'
-      price =  agility* 71 + strength * 10 + speed * 10 + balance * 10 + accuracy * 10
-    when 'D'
-      price = strength * 71 + balance * 10 + agility * 10 + accuracy * 10 + speed * 10
-    when 'L'
-      price = speed * 71 + balance * 10 + agility * 10 + accuracy * 10 + strength * 10
-    when 'M'
-      price = balance * 71 + agility * 10 + accuracy * 10 + strength * 10 + speed * 10
-    when 'A'
-      price = accuracy * 71 + speed * 10 + agility * 10 + strength * 10 + balance * 10
-    end
+    position = ["G", "D", "M", "A"].sample
+    level = rand(6..30) 
+    yellow_card = 0
+    red_card = 0
+    goal_scored = 0
+    injury = false
+    price = level * 8989
  
     Player.create!(
       name: name,
       position: position,
-      accuracy: accuracy,
-      strength: strength,
-      speed: speed,
-      balance: balance,
-      agility: agility,
+      level: level,
+      yellow_card: yellow_card,
+      red_card: red_card,
+      injury: injury,
+      goal_scored: goal_scored,
       price: price,
       team: team
     )
