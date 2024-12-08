@@ -45,6 +45,12 @@ $transparent-black-light: transparentize(#00000080, 0);
         height: 20px;
     }
 
+    .goal-ball-icon {
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+    }
+
     .team {
         background-color: $transparent-black;
         height: $container-height-large;
