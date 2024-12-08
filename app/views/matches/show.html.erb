@@ -13,11 +13,11 @@
           <th>Y</th>
           <th>R</th>
           <th>G</th>
-          <th>I</th>
+          <th><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
         </tr>
       </thead>
       <tbody>
-        <% @match.home_team.players.sort_by { |player| ["G", "D", "M", "A"].index(player.position) || 5 }.each do |player| %>
+        <% @match.home_team.players.sort_by { |player| ["G", "D", "M", "A"].index(player.position) || 4 }.each do |player| %>
           <tr>
             <td><%= player.name %></td>
             <td><%= player.position %></td>
@@ -25,7 +25,12 @@
             <td><%= player.yellow_card %></td>
             <td><%= player.red_card %></td>
             <td><%= player.goal_scored %></td>
-            <td><%= player.injury %></td>
+            <td><% if player.injury %>
+                  <%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %>
+                  <% else %>
+                  <%= image_tag 'cruz-verde.png', class: 'health-icon' %>
+                <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>  
@@ -54,7 +59,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @match.away_team.players.sort_by { |player| ["G", "D", "L", "M", "A"].index(player.position) || 5 }.each do |player| %>
+        <% @match.away_team.players.sort_by { |player| ["G", "D", "M", "A"].index(player.position) || 4 }.each do |player| %>
           <tr>
             <td><%= player.name %></td>
             <td><%= player.position %></td>

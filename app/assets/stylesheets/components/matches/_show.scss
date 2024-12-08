@@ -25,6 +25,16 @@ $transparent-black-light: transparentize(#00000080, 0);
     display: flex;
     justify-content: space-around;
 
+    .injury-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .health-icon {
+        width: 20px;
+        height: 20px;
+    }
+
     .team {
         background-color: $transparent-black;
         height: $container-height-large;
