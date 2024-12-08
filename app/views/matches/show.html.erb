@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @match.home_team.players.sort_by { |player| ["G", "D", "L", "M", "A"].index(player.position) || 5 }.each do |player| %>
+        <% @match.home_team.players.sort_by { |player| ["G", "D", "M", "A"].index(player.position) || 5 }.each do |player| %>
           <tr>
             <td><%= player.name %></td>
             <td><%= player.position %></td>
