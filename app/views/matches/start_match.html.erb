@@ -10,10 +10,10 @@
           <th>Name</th>
           <th>P</th>
           <th>Level</th>
-          <th>Y</th>
-          <th>R</th>
+          <th><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
+          <th><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>  
           <th>G</th>
-          <th>I</th>
+          <th><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +25,12 @@
             <td><%= player.yellow_card %></td>
             <td><%= player.red_card %></td>
             <td><%= player.goal_scored %></td>
-            <td><%= player.injury %></td>
+            <td><% if player.injury %>
+                  <%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %>
+                  <% else %>
+                  <%= image_tag 'cruz-verde.png', class: 'health-icon' %>
+                <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>  
@@ -48,10 +53,10 @@
           <th>Name</th>
           <th>P</th>
           <th>Level</th>
-          <th>Y</th>
-          <th>R</th>
+          <th><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
+          <th><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>  
           <th>G</th>
-          <th>I</th>
+          <th><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
         </tr>
       </thead>
       <tbody>
@@ -63,7 +68,12 @@
             <td><%= player.yellow_card %></td>
             <td><%= player.red_card %></td>
             <td><%= player.goal_scored %></td>
-            <td><%= player.injury %></td>
+            <td><% if player.injury %>
+                  <%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %>
+                  <% else %>
+                  <%= image_tag 'cruz-verde.png', class: 'health-icon' %>
+                <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>  

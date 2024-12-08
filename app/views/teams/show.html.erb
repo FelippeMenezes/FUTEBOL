@@ -27,25 +27,30 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th class="name-column">Name</th>
-            <th class="position-column">P</th>
-            <th class="level-column">Level</th>
-            <th class="yc-column">Y</th>
-            <th class="rc-column">R</th>              
-            <th class="gs-column">G</th>
-            <th class="i-column">I</th>
+            <th class="name-column text-center">Name</th>
+            <th class="position-column text-center">P</th>
+            <th class="level-column text-center">Level</th>
+            <th class="text-center"><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
+            <th class="text-center"><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>             
+            <th class="gs-column text-center">G</th>
+            <th class="text-center"><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
           </tr>
         </thead>
         <tbody>
-          <% @team.players.sort_by { |player| ['G', 'D', 'L', 'M', 'A'].index(player.position) }.each do |player| %>
+          <% @team.players.sort_by { |player| ['G', 'D', 'M', 'A'].index(player.position) }.each do |player| %>
             <tr>
-            <td><%= player.name %></td>
-            <td><%= player.position %></td>
-            <td><%= player.level %></td>
-            <td><%= player.yellow_card %></td>
-            <td><%= player.red_card %></td>
-            <td><%= player.goal_scored %></td>
-            <td><%= player.injury %></td>
+            <td class="text-center"><%= player.name %></td>
+            <td class="text-center"><%= player.position %></td>
+            <td class="text-center"><%= player.level %></td>
+            <td class="text-center"><%= player.yellow_card %></td>
+            <td class="text-center"><%= player.red_card %></td>
+            <td class="text-center"><%= player.goal_scored %></td>
+            <td class="text-center"><% if player.injury %>
+                  <%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %>
+                  <% else %>
+                  <%= image_tag 'cruz-verde.png', class: 'health-icon' %>
+                <% end %>
+            </td>
             </tr>
           <% end %>
         </tbody>
