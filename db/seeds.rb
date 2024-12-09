@@ -5,10 +5,10 @@ Faker::Config.locale = 'pt-BR'
 
 apelido = ['Paraíba', 'Ceará', 'Baiano', 'Piauí', 'Pará', 'Paulista', 'Carioca',
           'Mineiro', 'Capixaba', 'Gaúcho', 'Cabeção', 'Maradona', 'Pelézinho',
-          'Capeta', 'Chicão', 'Biro-Biro', 'Matador', 'Gol', 'Junior',
-          'Neto', 'Sheik', 'Fenômeno', 'Imperador', 'Dentinho', 'Barriga',
-          'Cacháça', 'Pirulito', 'Miojo', 'Perneta', 'Tufão', 'Careca',
-          'Batata', 'Pipoca']
+          'Capeta', 'Matador', 'Gol','Sheik', 'Fenômeno','Imperador', 'Dentinho',
+          'Barriga', 'Cacháça', 'Careca', 'Fofão', 'Xuxa', 'Ganso', 'Love', 'Ratão',
+          'Furacão', 'Chorão', 'Animal', 'Cazuza', 'Playmobil', 'Shrek', "Bola de Fogo",
+          'Zóio', 'Pit Bull', 'Show','Chinelinho', 'Pombo', 'Alemão', 'Loco' ]
 
 8.times do |i|
   team_name = Faker::Sports::Football.team
@@ -19,8 +19,8 @@ apelido = ['Paraíba', 'Ceará', 'Baiano', 'Piauí', 'Pará', 'Paulista', 'Cario
 
   positions = ["G"] * 3 + ["D"] * 6 + ["M"] * 6 + ["A"] * 5
   positions.each do |position|
-    name = Faker::Name.male_first_name + " " + Faker::Name.last_name
-    while Player.exists?(name: name) || name.length >= 15
+    name = Faker::Name.male_first_name
+    while Player.exists?(name: name)
       name = "#{Faker::Name.male_first_name} #{apelido.pop}"
     end
     level = rand(6..30)

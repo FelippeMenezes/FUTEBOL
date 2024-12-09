@@ -39,9 +39,32 @@ class MatchesController < ApplicationController
 
   def generate_result
     @match = Match.find(params[:id])
-    # Lógica para gerar o resultado da partida
-    @match.home_score = rand(0..5)
-    @match.away_score = rand(0..5)
+
+    home_top_players = @match.home_team.players.where(injury: false).order(level: :desc).limit(11)
+    away_top_players = @match.away_team.players.where(injury: false).order(level: :desc).limit(11)
+
+    case home_top_players.sum(:level)
+    when 0..150
+      @match.home_score = rand(0..1)
+    when 151..250
+      @match.home_score = rand(1..2)
+    when 251..350
+      @match.home_score = rand(2..3)
+    else
+      @match.home_score = rand(3..4)
+    end
+
+    case away_top_players.sum(:level)
+    when 0..150
+      @match.away_score = rand(0..1)
+    when 151..250
+      @match.away_score = rand(1..2)
+    when 251..350
+      @match.away_score = rand(2..3)
+    else
+      @match.away_score = rand(3..4)
+    end
+
     if @match.save
       redirect_to match_path(@match), notice: 'Resultado gerado com sucesso.'
     else

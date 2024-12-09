@@ -71,29 +71,30 @@
             </tr>
           </thead>
           <tbody>
-            <% Player.all.reject { |player| @team.players.include?(player) }.each do |player| %>
-              <tr>
-                <td>
-                  <label class="switch">
-                    <%= check_box_tag "team[player_ids][]", player.id, false %>
-                    <span class="slider"></span>
-                  </label>
-                </td>
-                <td class="text-center"><%= player.name %></td>
-                <td class="text-center"><%= player.position %></td>
-                <td class="text-center"><%= player.level %></td>
-                <td class="text-center"><%= player.yellow_card %></td>
-                <td class="text-center"><%= player.red_card %></td>
-                <td class="text-center"><%= player.goal_scored %></td>
-                <td class="text-center"><% if player.injury %>
-                      <%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %>
-                      <% else %>
-                      <%= image_tag 'cruz-verde.png', class: 'health-icon' %>
-                    <% end %>
-                </td>
-                <td class="text-center"><%= number_to_currency(player.price, unit: "$", delimiter: ".", precision: 0) %></td>
-              </tr>
-            <% end %>
+          <% Player.all.reject { |player| @team.players.include?(player) }.sort_by { |player| -player.price }.each do |player| %>
+            <tr>
+              <td>
+                <label class="switch">
+                  <%= check_box_tag "team[player_ids][]", player.id, false %>
+                  <span class="slider"></span>
+                </label>
+              </td>
+              <td class="text-center"><%= player.name %></td>
+              <td class="text-center"><%= player.position %></td>
+              <td class="text-center"><%= player.level %></td>
+              <td class="text-center"><%= player.yellow_card %></td>
+              <td class="text-center"><%= player.red_card %></td>
+              <td class="text-center"><%= player.goal_scored %></td>
+              <td class="text-center">
+                <% if player.injury %>
+                  <%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %>
+                <% else %>
+                  <%= image_tag 'cruz-verde.png', class: 'health-icon' %>
+                <% end %>
+              </td>
+              <td class="text-center"><%= number_to_currency(player.price, unit: "$", delimiter: ".", precision: 0) %></td>
+            </tr>
+          <% end %>
           </tbody>
         </table>
       </div>
