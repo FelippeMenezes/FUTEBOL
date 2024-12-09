@@ -5,15 +5,15 @@
   <h3>Jogadores:</h3>
   <div class="scrollable">
     <table class="table table-striped">
-      <thead>
+      <thead class="fixed-header">
         <tr>
-          <th>Name</th>
-          <th>P</th>
-          <th>Level</th>
-          <th><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
-          <th><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>  
-          <th><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
-          <th><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
+          <th class="th-name">Name</th>
+          <th class="th-position">P</th>
+          <th class="th-level">Level</th>
+          <th class="th-yellow-card"><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
+          <th class="th-red-card"><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>  
+          <th class="th-goal-ball"><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
+          <th class="th-injury"><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
         </tr>
       </thead>
       <tbody>
@@ -47,16 +47,17 @@
     <h3>Jogadores:</h3>
     <div class="scrollable">
     <table class="table table-striped">
-      <thead>
+      <thead class="fixed-header">
         <tr>
-          <th>Name</th>
-          <th>P</th>
-          <th>Level</th>
-          <th><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
-          <th><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>  
-          <th><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
-          <th><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
+          <th class="th-name">Name</th>
+          <th class="th-position">P</th>
+          <th class="th-level">Level</th>
+          <th class="th-yellow-card"><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
+          <th class="th-red-card"><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>  
+          <th class="th-goal-ball"><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
+          <th class="th-injury"><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
         </tr>
+      </thead>
       </thead>
       <tbody>
         <% @match.away_team.players.sort_by { |player| ["G", "D", "M", "A"].index(player.position) || 4 }.each do |player| %>

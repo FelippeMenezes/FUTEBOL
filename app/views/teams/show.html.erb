@@ -26,26 +26,26 @@
     <div class="scrollable">
       <table class="table table-striped">
         <thead>
-          <tr>
+          <tr class="sticky-header">
             <th class="name-column text-center">Name</th>
             <th class="position-column text-center">P</th>
             <th class="level-column text-center">Level</th>
-            <th class="text-center"><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
-            <th class="text-center"><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>             
-            <th class="text-center"><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
-            <th class="text-center"><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
+            <th class="yellow-card-column text-center"><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
+            <th class="red-card-column text-center"><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>             
+            <th class="goal-column text-center"><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
+            <th class="injury-column text-center"><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
           </tr>
         </thead>
         <tbody>
           <% @team.players.sort_by { |player| ['G', 'D', 'M', 'A'].index(player.position) }.each do |player| %>
             <tr>
-            <td class="text-center"><%= player.name %></td>
-            <td class="text-center"><%= player.position %></td>
-            <td class="text-center"><%= player.level %></td>
-            <td class="text-center"><%= player.yellow_card %></td>
-            <td class="text-center"><%= player.red_card %></td>
-            <td class="text-center"><%= player.goal_scored %></td>
-            <td class="text-center"><% if player.injury %>
+            <td class="name-column text-center"><%= player.name %></td>
+            <td class="position-column text-center"><%= player.position %></td>
+            <td class="level-column text-center"><%= player.level %></td>
+            <td class="yellow-card-column text-center"><%= player.yellow_card %></td>
+            <td class="red-card-column text-center"><%= player.red_card %></td>
+            <td class="goal-column text-center"><%= player.goal_scored %></td>
+            <td class="injury-column text-center"><% if player.injury %>
                   <%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %>
                   <% else %>
                   <%= image_tag 'cruz-verde.png', class: 'health-icon' %>

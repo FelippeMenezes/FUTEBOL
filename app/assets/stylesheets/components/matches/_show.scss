@@ -77,6 +77,41 @@ $transparent-black-light: transparentize(#00000080, 0);
             height: $scrollable-height;
             overflow-y: auto;
             border-radius: $border-radius;
+
+            .fixed-header {
+                position: sticky;
+                top: 0;
+                background-color: white;
+                z-index: 1;
+            }
+
+            .th-name {
+                width: 50%;
+            }
+            
+            .th-position {
+            width: 6%;
+            }
+            
+            .th-level {
+            width: 10%;
+            }
+            
+            .th-yellow-card {
+            width: 6%;
+            }
+            
+            .th-red-card {
+            width: 6%;
+            }
+            
+            .th-goal-ball {
+            width: 6%;
+            }
+            
+            .th-injury {
+            width: 6%;
+            }
         }
     }
 
