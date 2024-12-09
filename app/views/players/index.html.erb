@@ -9,7 +9,7 @@
         <table>
           <thead>
             <tr>
-              <th class="sell-column text-center">Sell</th>
+              <th class="sell-column text-center"></th>
               <th class="name-column text-center">Name</th>
               <th class="position-column text-center">P</th>
               <th class="level-column text-center">Level</th>
@@ -17,11 +17,11 @@
               <th class="text-center"> <%= image_tag 'red_card.png', class: 'red-card-icon' %></th>            
               <th class="text-center"><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
               <th class="text-center"> <%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
-              <th class="price-column">Price</th>
+              <th class="price-column text-center">Price</th>
             </tr>
           </thead>
           <tbody>
-            <% @team.players.each do |player| %>
+            <% @team.players.sort_by { |player| ['G', 'D', 'M', 'A'].index(player.position) || 4 }.each do |player| %>
               <tr>
                 <td>
                   <label class="switch">
@@ -41,7 +41,7 @@
                       <%= image_tag 'cruz-verde.png', class: 'health-icon' %>
                     <% end %>
                 </td>
-                <td class="text-center"><%= player.price %></td>
+                <td class="text-center"><%= number_to_currency(player.price, unit: "$", delimiter: ".", precision: 0) %></td>
               </tr>
             <% end %>
           </tbody>
@@ -59,7 +59,7 @@
         <table>
           <thead>
             <tr>
-              <th class="sell-column text-center">Buy</th>
+              <th class="sell-column text-center"></th>
               <th class="name-column text-center">Name</th>
               <th class="position-column text-center">P</th>
               <th class="level-column text-center">Level</th>
@@ -91,7 +91,7 @@
                       <%= image_tag 'cruz-verde.png', class: 'health-icon' %>
                     <% end %>
                 </td>
-                <td><%= player.price %></td>
+                <td class="text-center"><%= number_to_currency(player.price, unit: "$", delimiter: ".", precision: 0) %></td>
               </tr>
             <% end %>
           </tbody>

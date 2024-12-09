@@ -1,45 +1,46 @@
 <div class="matches-start-match-container">
   <div class="home-team text-center">
-  <h2>Time da casa</h2>
-  <%= @match.home_team.name %>
-  <h3>Jogadores:</h3>
-  <div class="scrollable">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>P</th>
-          <th>Level</th>
-          <th><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
-          <th><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>  
-          <th><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
-          <th><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @match.home_team.players.sort_by { |player| ["G", "D", "M", "A"].index(player.position) || 4 }.each do |player| %>
+    <h2>Time da casa</h2>
+    <%= @match.home_team.name %>
+    <h3>Jogadores:</h3>
+    <div class="scrollable">
+      <table class="table table-striped">
+        <thead class="fixed-header">
           <tr>
-            <td><%= player.name %></td>
-            <td><%= player.position %></td>
-            <td><%= player.level %></td>
-            <td><%= player.yellow_card %></td>
-            <td><%= player.red_card %></td>
-            <td><%= player.goal_scored %></td>
-            <td><% if player.injury %>
+            <th class="name-column">Name</th>
+            <th class="position-column">P</th>
+            <th class="level-column">Level</th>
+            <th class="yellow-card-column"><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
+            <th class="red-card-column"><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>  
+            <th class="goal-column"><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
+            <th class="injury-column"><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @match.home_team.players.sort_by { |player| ["G", "D", "M", "A"].index(player.position) || 4 }.each do |player| %>
+            <tr>
+              <td class="name-column"><%= player.name %></td>
+              <td class="position-column"><%= player.position %></td>
+              <td class="level-column"><%= player.level %></td>
+              <td class="yellow-card-column"><%= player.yellow_card %></td>
+              <td class="red-card-column"><%= player.red_card %></td>
+              <td class="goal-column"><%= player.goal_scored %></td>
+              <td class="injury-column">
+                <% if player.injury %>
                   <%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %>
-                  <% else %>
+                <% else %>
                   <%= image_tag 'cruz-verde.png', class: 'health-icon' %>
                 <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>  
-    </table>
-  </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>  
+      </table>
+    </div>
   </div>
   <div class="score text-center">
     <%= form_with url: generate_result_match_path(@match), method: :post do %>
-    <%= submit_tag 'Iniciar Partida', class: "btn btn-primary" %>
+      <%= submit_tag 'Iniciar Partida', class: "btn btn-primary" %>
     <% end %>
   </div>
   <div class="away-team text-center">
@@ -47,38 +48,39 @@
     <%= @match.away_team.name %>
     <h3>Jogadores:</h3>
     <div class="scrollable">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>P</th>
-          <th>Level</th>
-          <th><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
-          <th><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>  
-          <th><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
-          <th><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @match.away_team.players.sort_by { |player| ["G", "D", "M", "A"].index(player.position) || 4 }.each do |player| %>
+      <table class="table table-striped">
+        <thead class="fixed-header">
           <tr>
-            <td><%= player.name %></td>
-            <td><%= player.position %></td>
-            <td><%= player.level %></td>
-            <td><%= player.yellow_card %></td>
-            <td><%= player.red_card %></td>
-            <td><%= player.goal_scored %></td>
-            <td><% if player.injury %>
+            <th class="name-column">Name</th>
+            <th class="position-column">P</th>
+            <th class="level-column">Level</th>
+            <th class="yellow-card-column"><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
+            <th class="red-card-column"><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>  
+            <th class="goal-column"><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
+            <th class="injury-column"><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @match.away_team.players.sort_by { |player| ["G", "D", "M", "A"].index(player.position) || 4 }.each do |player| %>
+            <tr>
+              <td class="name-column"><%= player.name %></td>
+              <td class="position-column"><%= player.position %></td>
+              <td class="level-column"><%= player.level %></td>
+              <td class="yellow-card-column"><%= player.yellow_card %></td>
+              <td class="red-card-column"><%= player.red_card %></td>
+              <td class="goal-column"><%= player.goal_scored %></td>
+              <td class="injury-column">
+                <% if player.injury %>
                   <%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %>
-                  <% else %>
+                <% else %>
                   <%= image_tag 'cruz-verde.png', class: 'health-icon' %>
                 <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>  
-    </table>
-  </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>  
+      </table>
+    </div>
   </div>
 </div>
 

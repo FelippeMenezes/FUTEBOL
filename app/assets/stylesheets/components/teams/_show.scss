@@ -83,6 +83,12 @@
     border-radius: 10px;
     padding: 10px;
 
+    .sticky-header th {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
     .scrollable {
         background-color: transparentize($color: #00000080, $amount: 0);
         height: 425px; 
@@ -107,5 +113,21 @@
 
     .btn-success {
         border-radius: 10px;
+    }
+
+    .name-column {
+        width: 50%;
+    }
+    
+    .position-column,
+    .yellow-card-column,
+    .red-card-column,
+    .goal-column,
+    .injury-column {
+        width: 6%;
+    }
+    
+    .level-column {
+        width: 20%;
     }
 }
