@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody class='text-center'>
-        <% @matches.each do |match| %>
+        <% @matches.select { |match| match.home_team == current_user.team || match.away_team == current_user.team }.each do |match| %>
         <tr>
           <td class="col-home"><%= match.home_team.name %></td>
           <td class="col-home-score"><%= match.home_score %></td>
