@@ -10,11 +10,19 @@
         </div>
         <div class="match-box text-center">
           <h2>Inicie uma Partida</h2>
-          <%= link_to 'Iniciar Partida', new_match_path, class: 'btn btn-warning' %>            
+          <% if @team.players.size >= 11 %>
+            <%= link_to 'Iniciar Partida', new_match_path, class: 'btn btn-warning' %>   
+          <% else %>
+            <%= link_to 'Contrate Jogadores', team_players_path(@team), class: 'btn btn-warning' %>
+          <% end %>
         </div>
         <div class="match-box text-center">
           <h2>Inicie um Campeonato</h2>
-          <%= link_to 'Iniciar Partida', new_match_path, class: 'btn btn-danger' %>            
+          <% if @team.players.size >= 11 %>
+            <%= link_to 'Iniciar Campeonato', new_match_path, class: 'btn btn-danger' %>    
+          <% else %>
+          <%= link_to 'Contrate Jogadores', team_players_path(@team), class: 'btn btn-danger' %>
+          <% end %>
         </div>
       <%= link_to 'Voltar', new_team_path, class: 'btn btn-secondary' %>   
       </div>
@@ -25,6 +33,7 @@
   <h4 class="text-center">Seus Jogadores</h4>
     <div class="scrollable">
       <table class="table table-striped">
+        <% if @team.players.size >= 11 %>
         <thead>
           <tr class="sticky-header">
             <th class="name-column text-center">Name</th>
@@ -54,6 +63,9 @@
             </tr>
           <% end %>
         </tbody>
+        <% else %>
+        <p class="text-center size-team-message">Seu time precisa ter no mínimo 11 jogadores</p>
+        <% end %>
       </table>
     </div>
     <div class="text-center">
