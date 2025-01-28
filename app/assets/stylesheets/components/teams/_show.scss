@@ -109,6 +109,11 @@
             background: transparentize($color: #00000080, $amount: 0);
             color: white;
         }
+
+        .size-team-message {
+            font-size: 25px;
+            margin-top: 200px;
+        }
     }
 
     .btn-success {
