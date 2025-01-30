@@ -71,7 +71,7 @@
             </tr>
           </thead>
           <tbody>
-          <% Player.all.reject { |player| @team.players.include?(player) }.sort_by { |player| -player.price }.each do |player| %>
+          <% Player.all.reject { |player| @team.players.include?(player) }.sort_by { |player| -player.position }.each do |player| %>
             <tr>
               <td>
                 <label class="switch">

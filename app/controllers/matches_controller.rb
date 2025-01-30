@@ -63,7 +63,7 @@ class MatchesController < ApplicationController
       @match.away_score = rand(2..3)
     else
       @match.away_score = rand(3..4)
-    end
+    end    
 
     if @match.save
       redirect_to match_path(@match), notice: 'Resultado gerado com sucesso.'
