@@ -10,7 +10,11 @@
     <%= form.collection_select :opponent_team_id, Team.where(user_id: nil), :id, :name, {}, { class: 'rounded-select' } %>
   </div>
 
+  <% if current_user.team %>
   <%= form.hidden_field :user_team_id, value: current_user.team.id %>
+  <% else %>
+    <p>Você não tem um time associado. Por favor, associe um time antes de continuar.</p>
+  <% end %>
 
   <div class="actions">
     <%= link_to 'Voltar', team_path(@team), class: 'btn btn-secondary' %>

@@ -56,7 +56,7 @@ positions.each do |position|
   red_card = 0
   goal_scored = 0
   injury = false
-  price = level * 8989
+  price = level * 8769
 
   Player.create!(
     name: name,
