@@ -15,6 +15,15 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.user = current_user
     @team.cash = 1000000
+    if @team.name.empty?
+      error_messages = [
+        'Ah... Você sabe que todo time precisa de um nome. Seja criativo!
+        Seus torcedores vão adorar.',
+        'Quer criar um time sem nome?
+        Digite qualquer coisa, você poderá trocar o nome sempre que quiser.'
+      ]
+      redirect_to new_team_path, alert: error_messages.sample and return
+    end
     if @team.save
       redirect_to @team, notice: 'Team created successfully.'
     else
