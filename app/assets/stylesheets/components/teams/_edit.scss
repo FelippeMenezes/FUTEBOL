@@ -1,4 +1,4 @@
-.new-team {
+.edit-team {
     position: absolute;
     top: 50px;
     left: 0;
@@ -8,7 +8,7 @@
     z-index: -1;
 }
 
-.create-team {
+.edit-create-team {
     background-color: transparentize($color: #0000007e, $amount: 0);
     height: 200px;
     color: $white;
@@ -27,22 +27,6 @@
             border-radius: 10px;
             margin: 15px;
         }
-    }
-}
-
-.created-teams{
-    background-color: transparentize($color: #0000007e, $amount: 0);
-    height: 200px;
-    color: $white;
-    margin-top: 25px;
-    margin-left: 50px;
-    border-radius: 10px;
-    width: 450px;
-    padding: 25px;
-
-    .btn-info {
-        margin-bottom: 5px;
-        border-radius: 10px;
     }
 
     .btn-primary {
