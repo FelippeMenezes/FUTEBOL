@@ -19,12 +19,22 @@
 
 <% if current_user.team.present? %>
 <div class="created-teams">
-  <h2 class="text-center"><%= current_user.team.name %></h2>
-  <div class="text-center">
-    <%= link_to 'Editar', edit_team_path(current_user.team), class: 'btn btn-info' %>
-    <%= link_to 'Excluir', team_path(current_user.team), method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %>
+  <div class="text-center name-edit-delete" >
+    <div class="h4"><%= current_user.team.name %></div>
+    <div class="link-container">
+      <div>
+      <%= link_to edit_team_path(current_user.team) do %>
+        <%= image_tag 'escrever.png', alt: 'Editar', class: "edit-team-ico" %>
+      <% end %>
+      </div>
+      <div>
+      <%= link_to team_path(current_user.team), method: :delete, data: { confirm: 'Você tem certeza?' } do %>
+        <%= image_tag 'excluir.png', alt: 'Excluir', class: 'delete-team-ico' %>
+      <% end %>
+      </div>
+    </div>
   </div>
-  <div class="text-center">    
+  <div class="text-center cash-box">    
       <h4><%= "Saldo: #{number_to_currency(current_user.team.cash)}" %></h4>
       <div class="text-center">
       <%= link_to 'Jogar', team_path(current_user.team), class: 'btn btn-primary' %>
