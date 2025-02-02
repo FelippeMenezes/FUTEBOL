@@ -46,8 +46,9 @@ class TeamsController < ApplicationController
 
   def destroy
     @team = Team.find(params[:id])
+    Rails.logger.info "Excluindo time: #{@team.id}"
     @team.destroy
-    redirect_to teams_path, notice: 'Team deleted successfully.'
+    redirect_to new_team_path, notice: 'Time excluído.'
   end
 
   def buy_players
