@@ -1,0 +1,13 @@
+<div class="edit-create-team text-center">
+    <%= form_with(model: @team, local: true) do |form| %>
+      <div class="field">
+        <h3><%= form.label :name, "Renomeie o seu Time" %></h3>
+        <%= form.text_field :name, class: "field-name" %>
+      </div>
+      <div class="actions">
+        <%= form.submit "Novo nome do time", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+
+<%= image_tag 'create_team.jpeg', class: 'edit-team' %>

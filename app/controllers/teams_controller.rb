@@ -25,7 +25,7 @@ class TeamsController < ApplicationController
       redirect_to new_team_path, alert: error_messages.sample and return
     end
     if @team.save
-      redirect_to @team, notice: 'Team created successfully.'
+      redirect_to @team, notice: 'Time criado.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,7 +38,7 @@ class TeamsController < ApplicationController
   def update
     @team = Team.find(params[:id])
     if @team.update(team_params)
-      redirect_to @team, notice: 'Team updated successfully.'
+      redirect_to @team, notice: 'Nome do time atualizado.'
     else
       render :edit, status: :unprocessable_entity
     end

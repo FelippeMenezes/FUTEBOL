@@ -20,6 +20,9 @@
 <% if current_user.team.present? %>
 <div class="created-teams">
   <h2 class="text-center"><%= current_user.team.name %></h2>
+  <div class="text-center">
+    <%= link_to 'Editar', edit_team_path(current_user.team), class: 'btn btn-info' %>
+  </div>
   <div class="text-center">    
       <h4><%= "Saldo: #{number_to_currency(current_user.team.cash)}" %></h4>
       <div class="text-center">
