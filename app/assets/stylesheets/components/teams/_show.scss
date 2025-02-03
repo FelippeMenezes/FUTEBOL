@@ -48,7 +48,22 @@
     .btn-secondary {
         margin-top: 10px;
         border-radius: 10px;
+
+        &:hover {
+            background-color: red;
+        }
     }
+
+    .delete-team-ico {
+        width: 20px;
+        height: 20px;
+
+        &:hover {
+            filter: invert(100%); 
+            cursor: pointer;
+        }
+    }
+
 }
 
 .team-box {
@@ -57,6 +72,43 @@
     height: 250px;
     border-radius: 10px;
     padding: 20px;
+
+    .team-box-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .ico-fake {
+        filter: none;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        opacity: 0;
+    }
+
+    .edit-team-ico {
+        filter: invert(100%);
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+
+        &:hover {
+            filter: brightness(0) saturate(100%) invert(74%) sepia(99%) saturate(748%) hue-rotate(1deg) brightness(102%) contrast(101%); // ajuste conforme necessário
+            cursor: pointer;
+        }
+    }
+
+    .delete-team-ico {
+        filter: invert(100%);
+        width: 20px;
+        height: 20px;
+
+        &:hover {
+            filter: brightness(0) saturate(100%) invert(22%) sepia(100%) saturate(7499%) hue-rotate(357deg) brightness(101%) contrast(101%); // ajuste conforme necessário
+            cursor: pointer;
+        }
+    }
 }
 
 .match-box {

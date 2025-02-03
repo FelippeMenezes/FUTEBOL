@@ -3,7 +3,19 @@
     <div class="show-teams">
       <div>
         <div class="team-box text-center">
-          <h2 class="text-center"><%= "#{current_user.team.name}" %></h2>
+          <div class="team-box-buttons">
+            <div class="icons-container">
+              <%= image_tag 'escrever.png', alt: 'Editar', class: "ico-fake" %>
+            </div>
+            <div>
+              <h2 class="text-center"><%= "#{current_user.team.name}" %></h2>
+            </div>
+            <div>            
+              <%= link_to edit_team_path(current_user.team) do %>
+                <%= image_tag 'escrever.png', alt: 'Editar', class: "edit-team-ico" %>
+              <% end %>
+            </div>
+          </div>
           <div class="text-center">
             <h5><%= "Saldo: #{number_to_currency(current_user.team.cash)}" %></h5>
           </div>
@@ -24,7 +36,9 @@
           <%= link_to 'Contrate Jogadores', team_players_path(@team), class: 'btn btn-danger' %>
           <% end %>
         </div>
-      <%= link_to 'Voltar', new_team_path, class: 'btn btn-secondary' %>   
+      <%= link_to team_path(current_user.team), method: :delete, data: { confirm: "Esta ação venderá o time #{current_user.team.name} definitivamente por $1.000.000,00.\n Tem certeza que seja realizar esta operação?" }, class: 'btn btn-secondary' do %>
+        <%= image_tag 'excluir.png', alt: 'Excluir', class: 'delete-team-ico' %>
+      <% end %>
       </div>
     </div>
   <% end %>
