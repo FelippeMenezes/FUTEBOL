@@ -20,6 +20,10 @@
 <% if current_user.team.present? %>
 <div class="created-teams">
   <div class="text-center name-edit-delete" >
+    <div class="icons-container">
+      <%= image_tag 'escrever.png', alt: 'Editar', class: "ico-fake" %>
+      <%= image_tag 'excluir.png', alt: 'Excluir', class: 'ico-fake' %>
+    </div>
     <div class="h4"><%= current_user.team.name %></div>
     <div class="link-container">
       <div>
