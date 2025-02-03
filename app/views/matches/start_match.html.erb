@@ -39,9 +39,10 @@
     </div>
   </div>
   <div class="score text-center">
-    <%= form_with url: generate_result_match_path(@match), method: :post do %>
-      <%= submit_tag 'Iniciar Partida', class: "btn btn-primary" %>
+    <%= form_with url: generate_result_match_path(@match), method: :post, id: 'start-match-form' do %>
+      <%= submit_tag 'Iniciar Partida', class: "btn btn-primary", id: 'start-match-button', onclick: "startTimer(event)" %>
     <% end %>
+    <div class="timer text-center" id="timer" style="display: none;">00:00</div>
   </div>
   <div class="away-team text-center">
     <h2>Visitante</h2>
@@ -87,3 +88,27 @@
 <%= link_to 'Voltar', new_match_path, class: 'btn btn-secondary match-start-back-button' %>
 
 <%= image_tag 'match-new.jpeg', class: 'new-team' %>
+
+<script>
+  function startTimer(event) {
+    event.preventDefault();
+    var timerElement = document.getElementById('timer');
+    var startButton = document.getElementById('start-match-button');
+    var timeElapsed = 0; // Tempo inicial em segundos
+    var totalTime = 5400; // 90 minutos em segundos
+    timerElement.style.display = 'block';
+    startButton.style.display = 'none';
+
+    var countdown = setInterval(function() {
+      if (timeElapsed >= totalTime) {
+        clearInterval(countdown);
+        document.getElementById('start-match-form').submit();
+      } else {
+        var minutes = Math.floor(timeElapsed / 60);
+        var seconds = timeElapsed % 60;
+        timerElement.innerHTML = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+        timeElapsed += 10;
+      }
+    }, 1);
+  }
+</script>
