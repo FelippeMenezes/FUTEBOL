@@ -66,7 +66,7 @@
 
     .image-separator {
         display: inline-block;
-        width: 10px; // ajuste conforme necessário
+        width: 10px;
     }
 
     .edit-team-ico {
@@ -76,7 +76,7 @@
         margin-right: 10px;
 
         &:hover {
-            filter: brightness(0) saturate(100%) invert(74%) sepia(99%) saturate(748%) hue-rotate(1deg) brightness(102%) contrast(101%); // ajuste conforme necessário
+            filter: brightness(0) saturate(100%) invert(74%) sepia(99%) saturate(748%) hue-rotate(1deg) brightness(102%) contrast(101%);
             cursor: pointer;
         }
     }
@@ -87,7 +87,7 @@
         height: 20px;
 
         &:hover {
-            filter: brightness(0) saturate(100%) invert(22%) sepia(100%) saturate(7499%) hue-rotate(357deg) brightness(101%) contrast(101%); // ajuste conforme necessário
+            filter: brightness(0) saturate(100%) invert(22%) sepia(100%) saturate(7499%) hue-rotate(357deg) brightness(101%) contrast(101%);
             cursor: pointer;
         }
     }
