@@ -149,7 +149,12 @@ $transparent-black-light: transparentize(#00000080, 0);
 
 .match-show-back-button {
     margin-top: 5px;
-    margin-left: $container-margin-large;
+    margin-left: 50px;
+    width: 225px;
+    height: 35px;
+    padding: 5px;
     border-radius: $border-radius;
 }
+
+
 
