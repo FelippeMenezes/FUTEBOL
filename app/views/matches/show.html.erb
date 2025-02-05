@@ -38,8 +38,11 @@
   </div>
   </div>
   <div class="score text-center">
-    <h2>Placar</h2>
-    <%= @match.home_score %> - <%= @match.away_score %>
+    <div id="extra-content" style="display: none;">
+      <h2>Placar</h2>
+      <%= @match.home_score %> - <%= @match.away_score %>
+    </div>
+    <div class="timer text-center" id="timer">00:00</div>
   </div>
   <div class="away-team text-center">
     <h2>Visitante</h2>
@@ -86,3 +89,34 @@
 
 <%= image_tag 'match-new.jpeg', class: 'new-team' %>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    startTimer();
+  });
+
+  function startTimer() {
+    var timerElement = document.getElementById('timer');
+    var extraContent = document.getElementById('extra-content');
+    var timeElapsed = 0;
+    var totalTime = 90 * 60;
+    timerElement.style.display = 'block';
+
+    var countdown = setInterval(function() {
+      if (timeElapsed >= totalTime) {
+        clearInterval(countdown);
+        extraContent.style.display = 'block'; 
+      } else {
+        var minutes = Math.floor(timeElapsed / 60);
+        var seconds = timeElapsed % 60;
+        timerElement.innerHTML = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+        timeElapsed += 5;
+      }
+      if (timeElapsed >= 5390) {
+        timerElement.style.display = 'none';
+      }
+      if (timeElapsed == 2725) {
+        alert('Fim do primeiro tempo!');
+      }
+    }, 1);
+  }
+</script>

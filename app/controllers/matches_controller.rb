@@ -66,7 +66,7 @@ class MatchesController < ApplicationController
     end    
 
     if @match.save
-      redirect_to match_path(@match), notice: 'Resultado gerado com sucesso.'
+      redirect_to match_path(@match)
     else
       flash[:alert] = 'Erro ao salvar o resultado.'
       render :show, status: :unprocessable_entity
