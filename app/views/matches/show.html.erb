@@ -85,7 +85,7 @@
   </div>
 </div>
 
-<%= link_to 'Histórico de Partidas', matches_path, class: 'btn btn-primary match-show-back-button' %>
+<%= link_to 'Histórico de Partidas', matches_path, class: 'btn btn-primary match-show-back-button', id: 'history-button', style: 'display: none;' %>
 
 <%= image_tag 'match-new.jpeg', class: 'new-team' %>
 
@@ -97,6 +97,7 @@
   function startTimer() {
     var timerElement = document.getElementById('timer');
     var extraContent = document.getElementById('extra-content');
+    var historyButton = document.getElementById('history-button');
     var timeElapsed = 0;
     var totalTime = 90 * 60;
     timerElement.style.display = 'block';
@@ -105,6 +106,7 @@
       if (timeElapsed >= totalTime) {
         clearInterval(countdown);
         extraContent.style.display = 'block'; 
+        historyButton.style.display = 'block';
       } else {
         var minutes = Math.floor(timeElapsed / 60);
         var seconds = timeElapsed % 60;
