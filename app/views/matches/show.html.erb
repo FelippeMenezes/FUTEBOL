@@ -91,6 +91,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    var homeScore = <%= @match.home_score %>;
     startTimer();
   });
 
@@ -113,11 +114,11 @@
         timerElement.innerHTML = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
         timeElapsed += 5;
       }
-      if (timeElapsed >= 5390) {
-        timerElement.style.display = 'none';
-      }
       if (timeElapsed == 2725) {
         alert('Fim do primeiro tempo!');
+      }
+      if (timeElapsed >= 5390) {
+        timerElement.style.display = 'none';
       }
     }, 1);
   }

@@ -40,7 +40,7 @@
   </div>
   <div class="score text-center">
     <%= form_with url: generate_result_match_path(@match), method: :post, id: 'start-match-form' do %>
-      <%= submit_tag 'Iniciar Partida', class: "btn btn-primary", id: 'start-match-button', onclick: "startTimer(event)" %>
+      <%= submit_tag 'Iniciar Partida', class: "btn btn-primary", onclick: "startTimer(event)" %>
     <% end %>
     <div class="timer text-center" id="timer" style="display: none;">00:00</div>
   </div>
