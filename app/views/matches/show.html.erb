@@ -38,7 +38,7 @@
   </div>
   </div>
   <div class="score text-center">
-    <div id="extra-content" style="display: none;">
+    <div id="score-content" style="display: none;">
       <h2>Placar</h2>
       <%= @match.home_score %> - <%= @match.away_score %>
     </div>
@@ -100,7 +100,7 @@
 
   function startTimer() {
     var timerElement = document.getElementById('timer');
-    var extraContent = document.getElementById('extra-content');
+    var extraContent = document.getElementById('score-content');
     var historyButton = document.getElementById('history-button');
     var timeElapsed = 0;
     var totalTime = 90 * 60;
