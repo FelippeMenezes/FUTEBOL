@@ -104,8 +104,10 @@
     var historyButton = document.getElementById('history-button');
     var timeElapsed = 0;
     var totalTime = 90 * 60;
-    var randomtime1 = (Math.floor(Math.random() * 540) + 1) * 10;
-    var randomtime2 = (Math.floor(Math.random() * 540) + 1) * 10;
+    var randomTime1 = (Math.floor(Math.random() * 540) + 1) * 10;
+    var randomTime2 = (Math.floor(Math.random() * 540) + 1) * 10;
+    console.log(randomTime1);
+    console.log(randomTime2);
     timerElement.style.display = 'block';
 
     var countdown = setInterval(function() {
@@ -120,11 +122,11 @@
         timeElapsed += 10;
       }
 
-      if (timeElapsed == randomtime1 && homeScore == 1) {
+      if (timeElapsed == randomTime1 && homeScore == 1) {
         alert('Gol do time da casa!');
       }
 
-      if (timeElapsed == randomtime2 && awayScore == 1) {
+      if (timeElapsed == randomTime2 && awayScore == 1) {
         alert('Gol do time visitante!');
       }
 
