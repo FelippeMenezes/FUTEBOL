@@ -3,7 +3,7 @@
 		<h1 class='text-center'>Suas partidas</h1>
     <div class="scrollable">
     <table>
-    <thead class='text-center sticky-header'>
+      <thead class='text-center sticky-header'>
         <tr>
           <th class="col-home">Casa</th>
           <th class="col-home-score"></th>
@@ -13,14 +13,16 @@
         </tr>
       </thead>
       <tbody class='text-center'>
-        <% @matches.select { |match| match.home_team == current_user.team || match.away_team == current_user.team }.each do |match| %>
-        <tr>
-          <td class="col-home"><%= match.home_team.name %></td>
-          <td class="col-home-score"><%= match.home_score %></td>
-          <td class="col-vs">X</td>
-          <td class="col-away-score"><%= match.away_score %></td>
-          <td class="col-away"><%= match.away_team.name %></td>
-      <% end %>
+        <% @matches.select { |match| match.home_team == current_user.team || match.away_team == current_user.team }.reverse_each do |match| %>
+          <tr>
+            <td class="col-home"><%= match.home_team.name %></td>
+            <td class="col-home-score"><%= match.home_score %></td>
+            <td class="col-vs">X</td>
+            <td class="col-away-score"><%= match.away_score %></td>
+            <td class="col-away"><%= match.away_team.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
     </div>
 		</table>

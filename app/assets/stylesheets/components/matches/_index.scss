@@ -36,7 +36,10 @@
         width: 100%;
     }
 
-    .col-home,
+    .col-home {
+        width: 25%;
+        padding-left: 5px;
+    }
     .col-away {
         width: 25%;
     }
