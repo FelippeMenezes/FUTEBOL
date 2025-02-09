@@ -1,46 +1,46 @@
 <div class="matches-show-container">
   <div class="home-team text-center">
-  <h2>Time da casa</h2>
-  <%= @match.home_team.name %>
-  <h3>Jogadores:</h3>
-  <div class="scrollable">
-    <table class="table table-striped">
-      <thead class="fixed-header">
-        <tr>
-          <th class="th-name">Name</th>
-          <th class="th-position">P</th>
-          <th class="th-level">Level</th>
-          <th class="th-yellow-card"><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
-          <th class="th-red-card"><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>  
-          <th class="th-goal-ball"><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
-          <th class="th-injury"><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @match.home_team.players.sort_by { |player| ["G", "D", "M", "A"].index(player.position) || 4 }.each do |player| %>
+    <h2>Time da casa</h2>
+    <%= @match.home_team.name %>
+    <h3>Jogadores:</h3>
+    <div class="scrollable">
+      <table class="table table-striped">
+        <thead class="fixed-header">
           <tr>
-            <td><%= player.name %></td>
-            <td><%= player.position %></td>
-            <td><%= player.level %></td>
-            <td><%= player.yellow_card %></td>
-            <td><%= player.red_card %></td>
-            <td><%= player.goal_scored %></td>
-            <td><% if player.injury %>
-                  <%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %>
-                  <% else %>
-                  <%= image_tag 'cruz-verde.png', class: 'health-icon' %>
-                <% end %>
-            </td>
+            <th class="th-name">Name</th>
+            <th class="th-position">P</th>
+            <th class="th-level">Level</th>
+            <th class="th-yellow-card"><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
+            <th class="th-red-card"><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>  
+            <th class="th-goal-ball"><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
+            <th class="th-injury"><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
           </tr>
-        <% end %>
-      </tbody>  
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          <% @match.home_team.players.sort_by { |player| ["G", "D", "M", "A"].index(player.position) || 4 }.each do |player| %>
+            <tr>
+              <td><%= player.name %></td>
+              <td><%= player.position %></td>
+              <td><%= player.level %></td>
+              <td><%= player.yellow_card %></td>
+              <td><%= player.red_card %></td>
+              <td><%= player.goal_scored %></td>
+              <td><% if player.injury %>
+                    <%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %>
+                    <% else %>
+                    <%= image_tag 'cruz-verde.png', class: 'health-icon' %>
+                  <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>  
+      </table>
+    </div>
   </div>
   <div class="score text-center">
-    <div id="score-content" style="display: none;">
+    <div id="score-content">
       <h2>Placar</h2>
-      <%= @match.home_score %> - <%= @match.away_score %>
+      <div id="score-display"> <span id="home-score">0</span> - <span id="away-score">0</span> </div>
     </div>
     <div class="timer text-center" id="timer">00:00</div>
   </div>
@@ -49,39 +49,38 @@
     <%= @match.away_team.name %>
     <h3>Jogadores:</h3>
     <div class="scrollable">
-    <table class="table table-striped">
-      <thead class="fixed-header">
-        <tr>
-          <th class="th-name">Name</th>
-          <th class="th-position">P</th>
-          <th class="th-level">Level</th>
-          <th class="th-yellow-card"><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
-          <th class="th-red-card"><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>  
-          <th class="th-goal-ball"><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
-          <th class="th-injury"><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
-        </tr>
-      </thead>
-      </thead>
-      <tbody>
-        <% @match.away_team.players.sort_by { |player| ["G", "D", "M", "A"].index(player.position) || 4 }.each do |player| %>
+      <table class="table table-striped">
+        <thead class="fixed-header">
           <tr>
-            <td><%= player.name %></td>
-            <td><%= player.position %></td>
-            <td><%= player.level %></td>
-            <td><%= player.yellow_card %></td>
-            <td><%= player.red_card %></td>
-            <td><%= player.goal_scored %></td>
-            <td><% if player.injury %>
-                  <%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %>
-                  <% else %>
-                  <%= image_tag 'cruz-verde.png', class: 'health-icon' %>
-                <% end %>
-            </td>
+            <th class="th-name">Name</th>
+            <th class="th-position">P</th>
+            <th class="th-level">Level</th>
+            <th class="th-yellow-card"><%= image_tag 'yellow_card.png', class: 'yellow-card-icon' %></th>
+            <th class="th-red-card"><%= image_tag 'red_card.png', class: 'red-card-icon' %></th>  
+            <th class="th-goal-ball"><%= image_tag 'goal_ball.png', class: 'goal-ball-icon' %></th>
+            <th class="th-injury"><%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %></th>
           </tr>
-        <% end %>
-      </tbody>  
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          <% @match.away_team.players.sort_by { |player| ["G", "D", "M", "A"].index(player.position) || 4 }.each do |player| %>
+            <tr>
+              <td><%= player.name %></td>
+              <td><%= player.position %></td>
+              <td><%= player.level %></td>
+              <td><%= player.yellow_card %></td>
+              <td><%= player.red_card %></td>
+              <td><%= player.goal_scored %></td>
+              <td><% if player.injury %>
+                    <%= image_tag 'cruz-vermelha.png', class: 'injury-icon' %>
+                    <% else %>
+                    <%= image_tag 'cruz-verde.png', class: 'health-icon' %>
+                  <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>  
+      </table>
+    </div>
   </div>
 </div>
 
@@ -94,16 +93,16 @@
   var awayScore = <%= @match.away_score || 0 %>;
 
   document.addEventListener('DOMContentLoaded', function() {
-    console.log(homeScore, awayScore);
     startTimer();
   });
 
   function startTimer() {
     var timerElement = document.getElementById('timer');
-    var extraContent = document.getElementById('score-content');
     var historyButton = document.getElementById('history-button');
+    var homeScoreElement = document.getElementById('home-score');
+    var awayScoreElement = document.getElementById('away-score');
     var timeElapsed = 0;
-    var totalTime = 90 * 60;
+    var totalTime = 90.5 * 60;
     var randomTime1 = (Math.floor(Math.random() * 540) + 1) * 10;
     var randomTime2 = (Math.floor(Math.random() * 540) + 1) * 10;
     console.log(randomTime1);
@@ -113,7 +112,6 @@
     var countdown = setInterval(function() {
       if (timeElapsed >= totalTime) {
         clearInterval(countdown);
-        extraContent.style.display = 'block'; 
         historyButton.style.display = 'block';
       } else {
         var minutes = Math.floor(timeElapsed / 60);
@@ -124,20 +122,18 @@
 
       if (timeElapsed == randomTime1 && homeScore == 1) {
         alert('Gol do time da casa!');
+        homeScoreElement.innerHTML = homeScore;
       }
 
       if (timeElapsed == randomTime2 && awayScore == 1) {
         alert('Gol do time visitante!');
+        awayScoreElement.innerHTML = awayScore;
       }
 
       if (timeElapsed == 2750) {
         alert('Fim do primeiro tempo!');
       }
 
-      if (timeElapsed >= 5390) {
-        timerElement.style.display = 'none';
-      }
-
-    }, 1); // Atualiza o cronômetro a cada segundo
+    }, 1);
   }
 </script>

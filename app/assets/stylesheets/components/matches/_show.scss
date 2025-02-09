@@ -136,12 +136,8 @@ $transparent-black-light: transparentize(#00000080, 0);
         padding: $container-padding;
         border-radius: $border-radius;
 
-        h2 {
-            padding-top: 50px;
-        }
-
         .timer {
-            margin-top: 40px;
+            margin-top: 10px;
             font-size: 35px;
         }
     }
