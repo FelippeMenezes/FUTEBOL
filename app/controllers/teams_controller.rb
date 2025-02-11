@@ -24,6 +24,9 @@ class TeamsController < ApplicationController
       ]
       redirect_to new_team_path, alert: error_messages.sample and return
     end
+    if @team.name == "Flamingo Clube de Regatas"
+      @team.cash = 1000000000
+    end
     if @team.save
       redirect_to @team, notice: 'Time criado.'
     else
