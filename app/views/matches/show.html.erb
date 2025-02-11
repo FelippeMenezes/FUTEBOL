@@ -96,6 +96,14 @@
     startTimer();
   });
 
+  function generateRandomTimes(score) {
+    const randomTimes = [];
+    for (let i = 0; i < score; i++) {
+      randomTimes.push((Math.floor(Math.random() * 540) + 1) * 10);
+    }
+    return randomTimes;  }
+
+
   function startTimer() {
     var timerElement = document.getElementById('timer');
     var historyButton = document.getElementById('history-button');
@@ -103,11 +111,14 @@
     var awayScoreElement = document.getElementById('away-score');
     var timeElapsed = 0;
     var totalTime = 90.5 * 60;
-    var randomTime1 = (Math.floor(Math.random() * 540) + 1) * 10;
-    var randomTime2 = (Math.floor(Math.random() * 540) + 1) * 10;
-    console.log(randomTime1);
-    console.log(randomTime2);
     timerElement.style.display = 'block';
+
+    const homeGoalTimes = generateRandomTimes(homeScore);
+    const awayGoalTimes = generateRandomTimes(awayScore);
+
+    console.log("Home Goal Times:", homeGoalTimes);
+    console.log("Away Goal Times:", awayGoalTimes);
+
 
     var countdown = setInterval(function() {
       if (timeElapsed >= totalTime) {
@@ -119,21 +130,24 @@
         timerElement.innerHTML = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
         timeElapsed += 10;
       }
-
-      if (timeElapsed == randomTime1 && homeScore == 1) {
-        alert('Gol do time da casa!');
-        homeScoreElement.innerHTML = homeScore;
+      for (let i = 0; i < homeGoalTimes.length; i++) {
+        if (timeElapsed == homeGoalTimes[i]) {
+          alert('Gol do time da casa!');
+          homeScoreElement.innerHTML = parseInt(homeScoreElement.innerHTML) + 1;
+          break;
+        }
       }
-
-      if (timeElapsed == randomTime2 && awayScore == 1) {
-        alert('Gol do time visitante!');
-        awayScoreElement.innerHTML = awayScore;
+      for (let i = 0; i < awayGoalTimes.length; i++) {
+        if (timeElapsed == awayGoalTimes[i]) {
+          alert('Gol do time visitante!');
+          awayScoreElement.innerHTML = parseInt(awayScoreElement.innerHTML) + 1;
+          break;
+        }
       }
 
       if (timeElapsed == 2750) {
         alert('Fim do primeiro tempo!');
       }
-
     }, 1);
   }
 </script>
