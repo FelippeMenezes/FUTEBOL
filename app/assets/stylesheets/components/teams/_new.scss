@@ -10,12 +10,12 @@
 
 .create-team {
     background-color: transparentize($color: #0000007e, $amount: 0);
-    height: 200px;
+    height: fit-content;
     color: $white;
     margin-top: 25px;
     margin-left: 50px;
     border-radius: 10px;
-    width: 450px;
+    width: fit-content;
     padding: 25px;
 
     .field {
@@ -26,18 +26,23 @@
         .field-name {
             border-radius: 10px;
             margin: 15px;
+            width: 370px;
         }
+    }
+
+    .btn-primary {
+        border-radius: 10px;
     }
 }
 
 .created-teams{
     background-color: transparentize($color: #0000007e, $amount: 0);
-    height: 200px;
+    height: fit-content;
     color: $white;
     margin-top: 25px;
     margin-left: 50px;
     border-radius: 10px;
-    width: 450px;
+    width: fit-content;
     padding: 25px;
 
     .icons-container {
@@ -74,6 +79,7 @@
         width: 20px;
         height: 20px;
         margin-right: 10px;
+        margin-left: 15px;
 
         &:hover {
             filter: brightness(0) saturate(100%) invert(74%) sepia(99%) saturate(748%) hue-rotate(1deg) brightness(102%) contrast(101%);
@@ -96,7 +102,7 @@
         margin-top: 20px;
         margin-bottom: 10px;
     }
-
+    
     .btn-primary {
         border-radius: 10px;
     }
