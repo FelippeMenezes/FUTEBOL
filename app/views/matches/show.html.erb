@@ -116,10 +116,6 @@
     const homeGoalTimes = generateRandomTimes(homeScore);
     const awayGoalTimes = generateRandomTimes(awayScore);
 
-    console.log("Home Goal Times:", homeGoalTimes);
-    console.log("Away Goal Times:", awayGoalTimes);
-
-
     var countdown = setInterval(function() {
       if (timeElapsed >= totalTime) {
         clearInterval(countdown);
