@@ -1,13 +1,13 @@
 $transparent-black: transparentize(#00000080, 0);
 $btn-primary-bg: #007bff;
 $btn-primary-color: white;
-$btn-padding: 10px 15px;
+$btn-padding: 5px 5px;
 $btn-border-radius: 10px;
 
 .container-players-index {
   display: flex;
   justify-content: space-between;
-  margin-top: 25px;
+  margin-top: 15px;
   color: white;
 
   .injury-icon {
@@ -48,7 +48,7 @@ $btn-border-radius: 10px;
 
   .left, .right {
     width: 47%;
-    height: 575px;
+    height: 565px;
     background-color: $transparent-black;
     border-radius: 10px;
     margin: 0 25px;

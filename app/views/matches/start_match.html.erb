@@ -85,15 +85,12 @@
   </div>
 </div>
 
-<%= link_to 'Voltar', new_match_path, class: 'btn btn-secondary match-start-back-button' %>
-
 <%= image_tag 'match-new.jpeg', class: 'new-team' %>
 
 <script>
   function startTimer(event) {
     event.preventDefault();
     var timerElement = document.getElementById('timer');
-    var startButton = document.getElementById('start-match-button');
     var timeElapsed = 0;
     var totalTime = 10;
 

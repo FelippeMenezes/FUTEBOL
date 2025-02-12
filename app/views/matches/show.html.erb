@@ -43,6 +43,9 @@
       <div id="score-display"> <span id="home-score">0</span> - <span id="away-score">0</span> </div>
     </div>
     <div class="timer text-center" id="timer">00:00</div>
+    <div>
+      <%= link_to 'Suas Partidas', matches_path, class: 'btn btn-primary match-show-back-button', id: 'history-button', style: 'display: none;' %>
+    </div>
   </div>
   <div class="away-team text-center">
     <h2>Visitante</h2>
@@ -83,8 +86,6 @@
     </div>
   </div>
 </div>
-
-<%= link_to 'Histórico de Partidas', matches_path, class: 'btn btn-primary match-show-back-button', id: 'history-button', style: 'display: none;' %>
 
 <%= image_tag 'match-new.jpeg', class: 'new-team' %>
 
