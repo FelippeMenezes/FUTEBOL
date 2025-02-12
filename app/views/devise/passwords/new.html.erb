@@ -9,7 +9,8 @@
       <%= f.input :email,
                   required: true,
                   autofocus: true,
-                  input_html: { autocomplete: "email" } %>
+                  input_html: { autocomplete: "email" },
+                  class: "email" %>
     </div>
 
     <div class="form-actions">
@@ -19,5 +20,5 @@
 
   <%= render "devise/shared/links" %>
   </div>
-<%= image_path 'home.jpeg', class: 'password-image' %>
+<%= image_tag 'home.jpeg', class: 'password-image' %>
 </div>

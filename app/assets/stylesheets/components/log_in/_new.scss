@@ -4,6 +4,14 @@
     align-items: center;
     color: white;
 
+    .email {
+        border-radius: 10px;
+    }
+
+    .password {
+        border-radius: 10px;
+    }
+
     .log-in-image {
         position: absolute;
         top: 50px;
@@ -29,5 +37,9 @@
         &:hover {
             font-weight: bold;
         }
+    }
+
+    .btn-primary {
+        border-radius: 10px;
     }
 }

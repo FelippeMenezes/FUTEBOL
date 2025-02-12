@@ -4,6 +4,18 @@
     align-items: center;
     color: white;
 
+    .email {
+        border-radius: 10px;
+    }
+
+    .password {
+        border-radius: 10px;
+    }
+
+    .new-password {
+        border-radius: 10px;
+    }
+
     .sign-up-image {
         position: absolute;
         top: 50px;
@@ -29,6 +41,10 @@
         &:hover {
             font-weight: bold;
         }
+    }
+
+    .btn-primary {
+        border-radius: 10px;
     }
 }
 
