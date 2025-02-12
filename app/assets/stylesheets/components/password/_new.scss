@@ -21,6 +21,10 @@
         margin: 50px;
         padding: 25px;
         border-radius: 10px;
+
+        .email {
+            border-radius: 10px;
+        }
     }
 
     .btn-body-color {
@@ -33,6 +37,10 @@
 
     .login {
         margin-top: 75px;
+    }
+
+    .btn-primary {
+        border-radius: 10px;
     }
 }
 
