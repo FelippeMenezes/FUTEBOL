@@ -44,26 +44,26 @@ class MatchesController < ApplicationController
     away_top_players = @match.away_team.players.where(injury: false).order(level: :desc).limit(11)
 
     case home_top_players.sum(:level)
-    when 0..150
+    when 0..353
       @match.home_score = rand(0..1)
-    when 151..250
-      @match.home_score = rand(1..2)
-    when 251..350
-      @match.home_score = rand(2..3)
+    when 353..370
+      @match.home_score = rand(0..2)
+    when 371..465
+      @match.home_score = rand(0..3)
     else
-      @match.home_score = rand(3..4)
+      @match.home_score = rand(0..4)
     end
 
     case away_top_players.sum(:level)
-    when 0..150
+    when 0..353
       @match.away_score = rand(0..1)
-    when 151..250
-      @match.away_score = rand(1..2)
-    when 251..350
-      @match.away_score = rand(2..3)
+    when 353..370
+      @match.away_score = rand(0..2)
+    when 371..465
+      @match.away_score = rand(0..3)
     else
-      @match.away_score = rand(3..4)
-    end    
+      @match.away_score = rand(0..4)
+    end   
 
     if @match.save
       redirect_to match_path(@match)
