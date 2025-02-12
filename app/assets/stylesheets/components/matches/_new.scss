@@ -18,16 +18,20 @@ $transparent-black: transparentize(#0000007e, 0);
 
 .create-match {
     background-color: $transparent-black;
-    height: 160px;
+    height: fit-content;
     color: $white;
-    margin-top: $container-margin-top;
+    margin-top: 15px;
     margin-left: $container-margin-left;    
-    width: $container-width;
-    padding: $container-padding;
+    width: fit-content;
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 15px;
     border-radius: $border-radius;
 
     .field {
         margin-bottom: 5px;
+        width: fit-content;
 
         .rounded-select,
         .field-name {

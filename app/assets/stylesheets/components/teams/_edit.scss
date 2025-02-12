@@ -10,13 +10,16 @@
 
 .edit-create-team {
     background-color: transparentize($color: #0000007e, $amount: 0);
-    height: 200px;
+    height: fit-content;
     color: $white;
-    margin-top: 25px;
+    margin-top: 15px;
     margin-left: 50px;
     border-radius: 10px;
-    width: 450px;
-    padding: 25px;
+    width: fit-content;
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 15px;
 
     .field {
         display: flex;
@@ -26,6 +29,7 @@
         .field-name {
             border-radius: 10px;
             margin: 15px;
+            width: 370px;
         }
     }
 
