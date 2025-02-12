@@ -125,7 +125,7 @@
         var minutes = Math.floor(timeElapsed / 60);
         var seconds = timeElapsed % 60;
         timerElement.innerHTML = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-        timeElapsed += 10;
+        timeElapsed += 1;
       }
       for (let i = 0; i < homeGoalTimes.length; i++) {
         if (timeElapsed == homeGoalTimes[i]) {
@@ -145,6 +145,6 @@
       if (timeElapsed == 2750) {
         alert('Fim do primeiro tempo!');
       }
-    }, 1);
+    }, 5);
   }
 </script>
