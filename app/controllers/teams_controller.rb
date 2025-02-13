@@ -24,7 +24,7 @@ class TeamsController < ApplicationController
       ]
       redirect_to new_team_path, alert: error_messages.sample and return
     end
-    if @team.name == "Honolulu Clube de Canoa"
+    if @team.name == "Honolulu Canoa Clube"
       @team.cash = 1000000000
     end
     if @team.save
