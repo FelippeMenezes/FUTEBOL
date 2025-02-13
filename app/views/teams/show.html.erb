@@ -22,6 +22,9 @@
           <div class="text-center">
             <h5><%= "Saldo: #{number_to_currency(current_user.team.cash)}" %></h5>
           </div>
+          <div class="text-center">
+            <%= link_to 'Suas Partidas', matches_path, class: 'btn btn-primary' %>
+          </div>
         </div>
         <div class="match-box text-center">
           <h2>Inicie uma Partida</h2>
