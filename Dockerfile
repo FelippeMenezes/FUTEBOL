@@ -42,7 +42,7 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install -y --no-install-recommends build-essential git libpq-dev libvips libffi-dev libjemalloc2 && \
+    apt-get install -y --no-install-recommends build-essential git libpq-dev libvips libffi-dev libjemalloc2 nodejs npm && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Copy built artifacts: gems, application
