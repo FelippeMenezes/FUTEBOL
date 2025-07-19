@@ -70,7 +70,7 @@ class TeamsController < ApplicationController
 
         if @team.save
           buy_update_player_prices(players)
-          redirect_to players_path, notice: 'Jogadores comprados com sucesso.'
+          redirect_to @team, notice: 'Jogadores comprados com sucesso.'
         else
           redirect_to players_path, alert: 'Erro ao salvar o time.'
         end
@@ -99,7 +99,7 @@ class TeamsController < ApplicationController
 
         if @team.save
           sell_update_player_prices(players)
-          redirect_to players_path, notice: 'Jogadores vendidos com sucesso.'
+          redirect_to @team, notice: 'Jogadores vendidos com sucesso.'
         else
           redirect_to players_path, alert: 'Erro ao salvar o time.'
         end
