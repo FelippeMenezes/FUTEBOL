@@ -75,7 +75,7 @@ class TeamsController < ApplicationController
           redirect_to players_path, alert: 'Erro ao salvar o time.'
         end
       else
-        redirect_to players_path, alert: 'Dinheiro insuficiente para a compra.'
+        redirect_to @team, alert: 'Dinheiro insuficiente para a compra.'
       end
     else
       redirect_to players_path, alert: 'Nenhum jogador selecionado para compra.'
