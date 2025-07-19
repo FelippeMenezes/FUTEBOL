@@ -1,6 +1,6 @@
 <div class="container-players-index">
   <div class="left">
-    <%= form_with(model: @team, url: sell_players_team_path(@team), method: :patch) do |form| %>
+    <%= form_with(model: @team, scope: :sell, url: sell_players_team_path(@team), method: :patch) do |form| %>
       <h3 class="text-center flex-container">
       <%= link_to 'Voltar', team_path(@team), class: 'btn btn-secondary' %>
       <span class="team-cash"><%= number_to_currency(@team.cash) %></span>
@@ -25,7 +25,7 @@
               <tr>
                 <td>
                   <label class="switch">
-                    <%= check_box_tag "team[player_ids][]", player.id, false %>
+                    <%= check_box_tag "sell[player_ids][]", player.id, false %>
                     <span class="slider"></span>
                   </label>
                 </td>
@@ -53,7 +53,7 @@
     <% end %>
   </div>
   <div class="right">
-    <%= form_with(model: @team, url: buy_players_team_path(@team), method: :patch) do |form| %>
+    <%= form_with(model: @team, scope: :buy, url: buy_players_team_path(@team), method: :patch) do |form| %>
       <h2 class="text-center">Jogadores à venda</h2>
       <div class="scrollable">
         <table>
@@ -75,7 +75,7 @@
             <tr>
               <td>
                 <label class="switch">
-                  <%= check_box_tag "team[player_ids][]", player.id, false %>
+                  <%= check_box_tag "buy[player_ids][]", player.id, false %>
                   <span class="slider"></span>
                 </label>
               </td>
